@@ -26,21 +26,21 @@ class WallFollow(Node):
             LaserScan, lidarscan_topic, self.scan_callback, 10
         )        
         # TODO: set PID gains
-        self.kp = 3
+        self.kp = 10
         self.kd = 0.1
         # self.kd = 0
-        self.ki = 0
+        self.ki = 0.01
 
         # TODO: store history
         self.integral = 0
         self.integral_thres = 8
         self.prev_error = 0 
         self.error = 0
-        self.targetD = 0.8
-        self.lookforwardD = 0.5
-        self.time_interval = 0.001
-        self.counter = 0
-        self.counter_thres = 5
+        self.targetD = 0.9
+        self.lookforwardD = 1.0
+        self.time_interval = 0.01
+        # self.counter = 0
+        # self.counter_thres = 2
 
         # TODO: store any necessary values you think you'll need
   
@@ -61,15 +61,19 @@ class WallFollow(Node):
         self.integral += error*self.time_interval
         I_term = min(self.integral_thres, self.ki*self.integral)
 
-        D_term = self.kd*(error-self.prev_error) / self.time_interval
+        D_term = self.kd*(abs(error) - abs(self.prev_error)) / self.time_interval
         self.prev_error = error
         # TODO: Use kp, ki & kd to implement a PID controller
         steering_angle = P_term + I_term + D_term
+        print(f'P_term{P_term}  ', f'I_term{I_term}  ', f'D_term{D_term}  ')
         print(f'steering_angle: {steering_angle}')
         if 0 <= abs(steering_angle) <= 10:
-            velocity = 1.5
-        elif 10 < abs(steering_angle) < 20:
             velocity = 1.0
+        elif 10 < abs(steering_angle) < 20:
+            velocity = 0.8
+        if abs(steering_angle) <= 0.5:
+            steering_angle = 0.0
+        # print(f'velocity: {velocity}')
         # TODO: fill in drive message and publish
         # velocity = 0.05
         self.ackermann_ord.drive.speed = velocity
@@ -89,22 +93,33 @@ class WallFollow(Node):
         angle_increment = scan_msg.angle_increment
         angle_min = scan_msg.angle_min
         distances = scan_msg.ranges
-        # get error       
+        ranges = scan_msg.ranges
+        # print(angle_min, scan_msg.angle_max, angle_increment)
+        # get error
+        minus_pi_range_idx = int((-pi/2 - angle_min) // angle_increment)
+        plus_pi_range_idx = int((pi/2 - angle_min) // angle_increment)
+
+        # print(f'minus_pi_range_idx: {minus_pi_range_idx, ranges[minus_pi_range_idx]}')
+        # print(f'plus_pi_range_idx: {plus_pi_range_idx, ranges[plus_pi_range_idx]}')       
+        # print(f'zero_range_idx: {int((0- angle_min) // angle_increment), ranges[plus_pi_range_idx]}')       
+
         theta = pi/6
         b = distances[int((pi/2 - angle_min) // angle_increment)]
         a = distances[int((pi/2 + theta - angle_min) // angle_increment)]
         alpha = atan2(a*cos(theta)-b, a*sin(theta))
         D = b*cos(alpha)
-        error = self.targetD-D+self.lookforwardD*sin(alpha)
-        error = -error
+        error = (D-self.lookforwardD*sin(alpha)) - self.targetD
+        if abs(error - self.prev_error) < 1e-3:
+            return 
+        # error = -error
         # print(f'D:{D}', f'lookforwardD:{self.lookforwardD*sin(alpha)}')
         # PID
         velocity = 0.3 # TODO: calculate desired car velocity based on error
-        if self.counter >= self.counter_thres:
-            self.pid_control(error, velocity) # TODO: actuate the car with PID
-            self.counter = 1
-        else:
-            self.counter += 1
+        # if self.counter >= self.counter_thres:
+        self.pid_control(error, velocity) # TODO: actuate the car with PID
+        #     self.counter = 1
+        # else:
+        #     self.counter += 1
         
 
 
