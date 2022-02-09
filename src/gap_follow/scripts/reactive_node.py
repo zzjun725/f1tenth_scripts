@@ -38,10 +38,10 @@ class ReactiveFollowGap(Node):
         # constant
         self.rb = 20
         self.counter = 0
-        self.counter_thres = 5
+        self.counter_thres = 2
         self.get_logger().info('Node_start')
-        self.safe_thres = 1.0
-        self.danger_thres = 0.7          
+        self.safe_thres = 1.2
+        self.danger_thres = 0.8          
 
     def preprocess_lidar(self, ranges):
         """ Preprocess the LiDAR scan array. Expert implementation includes:
@@ -51,7 +51,7 @@ class ReactiveFollowGap(Node):
         proc_ranges = []
         window_size = 5
         for i in range(0, len(ranges), window_size):
-            cur_mean = round(sum(ranges[i:i+window_size])/window_size, 6)
+            cur_mean = round(sum(ranges[i:i+window_size])/window_size, 5)
             # if cur_mean >= self.safe_thres:
             #     cur_mean = self.safe_thres
             for _ in range(window_size):
@@ -114,10 +114,11 @@ class ReactiveFollowGap(Node):
             if ranges[p] >= self.safe_thres:
                 safe_p_left = p
                 p+=1
-                while p < end_i and ranges[p] >= self.safe_thres:
+                while p < end_i and ranges[p] >= self.safe_thres and p-safe_p_left <= 290:
                     p += 1
                 safe_p_right = p-1
-                safe_range.put((-(safe_p_right-safe_p_left+1), (safe_p_left, safe_p_right)))
+                if safe_p_right != safe_p_left:
+                    safe_range.put((-(np.max(ranges[safe_p_left:safe_p_right])), (safe_p_left, safe_p_right)))
             else:
                 p += 1
         if safe_range.empty():
@@ -126,14 +127,24 @@ class ReactiveFollowGap(Node):
         else:
             while not safe_range.empty():
                 safe_p_left, safe_p_right = safe_range.get()[1]
-                target = np.argmax(ranges[safe_p_left:safe_p_right]) + safe_p_left
+                # farmost = np.argmax(ranges[safe_p_left:safe_p_right]) + safe_p_left
+                # shrink a constant
+                # target = np.argmax(ranges[safe_p_left:safe_p_right]) + safe_p_left
+                # if abs(safe_p_left-closest_i) > abs(safe_p_right-closest_i):
+                #     target = min(safe_p_left + 5*self.rb, safe_p_right)
+                # else:
+                #     target = max(safe_p_right - 5*self.rb, safe_p_left)
+
+                target = (safe_p_left+safe_p_right)//2
                 # return np.argmax(ranges[safe_p_left:safe_p_right]) + safe_p_left
-                if abs(safe_p_left-closest_i) > abs(safe_p_right-closest_i):
-                    target = (2*safe_p_left+safe_p_right)//3
-                    # return safe_p_left
-                else:
-                    target = (safe_p_left+2*safe_p_right)//3
+                # if abs(safe_p_left-farmost) > abs(safe_p_right-farmost):
+                #     target = (safe_p_left+2*farmost)//3
+                #     # return safe_p_left
+                # else:
+                #     target = (2*farmost+safe_p_right)//3
+                # if 0 <= target < 1080:
                 if 179 <= target <= 900:
+                # if 250 <= target <= 800:
                     return target
             return target
                 # return safe_p_right
@@ -171,21 +182,17 @@ class ReactiveFollowGap(Node):
 
         farmost_p_idx = self.find_best_point(start_i=0, end_i=len(proc_ranges), closest_i = closest_p_idx, ranges=proc_ranges)
         steering_angle = angle_min + farmost_p_idx*angle_increment
-        velocity = 1.0
+        velocity = 6.5
 
         print(f'farmost_p_idx: {farmost_p_idx}')
         print(f'farmost_p_range: {proc_ranges[farmost_p_idx]}')
         print(f'steering_angle: {steering_angle*180/pi}')
-        if abs(steering_angle) >=30:
-            velocity = 0.4
+        if abs(steering_angle) >=5:
+            velocity = 0.5
         #Publish Drive message
-        if self.counter >= self.counter_thres:
-            self.ackermann_ord.drive.speed = velocity
-            self.ackermann_ord.drive.steering_angle = steering_angle
-            self.drive_publisher.publish(self.ackermann_ord)            
-            self.counter = 1
-        else:
-            self.counter += 1
+        self.ackermann_ord.drive.speed = velocity
+        self.ackermann_ord.drive.steering_angle = steering_angle
+        self.drive_publisher.publish(self.ackermann_ord)            
 
 
 def main(args=None):
