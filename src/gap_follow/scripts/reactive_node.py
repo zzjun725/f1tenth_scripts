@@ -49,7 +49,7 @@ class ReactiveFollowGap(Node):
             2.Rejecting high values (eg. > 3m)
         """
         proc_ranges = []
-        window_size = 5
+        window_size = 10
         for i in range(0, len(ranges), window_size):
             cur_mean = round(sum(ranges[i:i+window_size])/window_size, 5)
             # if cur_mean >= self.safe_thres:
@@ -114,7 +114,8 @@ class ReactiveFollowGap(Node):
             if ranges[p] >= self.safe_thres:
                 safe_p_left = p
                 p+=1
-                while p < end_i and ranges[p] >= self.safe_thres and p-safe_p_left <= 290:
+                # while p < end_i and ranges[p] >= self.safe_thres and p-safe_p_left <= 290:
+                while p < end_i and ranges[p] >= self.safe_thres and p-safe_p_left <= 300:
                     p += 1
                 safe_p_right = p-1
                 if safe_p_right != safe_p_left:
@@ -182,7 +183,8 @@ class ReactiveFollowGap(Node):
 
         farmost_p_idx = self.find_best_point(start_i=0, end_i=len(proc_ranges), closest_i = closest_p_idx, ranges=proc_ranges)
         steering_angle = angle_min + farmost_p_idx*angle_increment
-        velocity = 6.5
+        # velocity = 6.5
+        velocity = 6.0
 
         print(f'farmost_p_idx: {farmost_p_idx}')
         print(f'farmost_p_range: {proc_ranges[farmost_p_idx]}')
