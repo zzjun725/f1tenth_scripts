@@ -36,13 +36,12 @@ class ReactiveFollowGap(Node):
         )
 
         # constant
-        # self.rb = 20
         self.rb = 15
         self.counter = 0
         self.counter_thres = 2
         self.get_logger().info('Node_start')
-        self.safe_thres = 1.3
-        self.danger_thres = 0.8          
+        self.safe_thres = 1.2
+        self.danger_thres = 0.7          
 
     def preprocess_lidar(self, ranges):
         """ Preprocess the LiDAR scan array. Expert implementation includes:
@@ -111,15 +110,16 @@ class ReactiveFollowGap(Node):
         safe_p_right = end_i
         p = start_i
         safe_range = PriorityQueue()
+
         while p < end_i:
             if ranges[p] >= self.safe_thres:
                 safe_p_left = p
                 p+=1
-                while p < end_i and ranges[p] >= self.safe_thres:
+                while p < end_i and ranges[p] >= self.safe_thres and p-safe_p_left < 250:
                     p += 1
                 safe_p_right = p-1
-                if safe_p_right != safe_p_left:
-                    safe_range.put((-(np.max(ranges[safe_p_left:safe_p_right])), (safe_p_left, safe_p_right)))
+                safe_range.put((-np.max(ranges[safe_p_left:safe_p_right]), (safe_p_left, safe_p_right)))
+
             else:
                 p += 1
         if safe_range.empty():
@@ -169,6 +169,7 @@ class ReactiveFollowGap(Node):
         print(f'closest_angle: {closest_angle}')
         #Eliminate all points inside 'bubble' (set them to zero)
         proc_ranges = self.refine_danger_range(start_i=0, end_i=len(proc_ranges), ranges=proc_ranges)
+        # proc_ranges[min(0, closest_p_idx-self.rb):closest_p_idx+self.rb] = 0
 
         #Find max length gap
         #Find the best point in the gap
@@ -182,13 +183,13 @@ class ReactiveFollowGap(Node):
 
         farmost_p_idx = self.find_best_point(start_i=0, end_i=len(proc_ranges), closest_i = closest_p_idx, ranges=proc_ranges)
         steering_angle = angle_min + farmost_p_idx*angle_increment
-        velocity = 1.0
+        velocity = 1.1
 
         print(f'farmost_p_idx: {farmost_p_idx}')
         print(f'farmost_p_range: {proc_ranges[farmost_p_idx]}')
         print(f'steering_angle: {steering_angle*180/pi}')
-        if abs(steering_angle) >=5:
-            velocity = 0.5
+        if abs(steering_angle) >=10:
+            velocity = 0.4
         #Publish Drive message
         self.ackermann_ord.drive.speed = velocity
         self.ackermann_ord.drive.steering_angle = steering_angle
