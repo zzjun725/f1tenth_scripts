@@ -1,0 +1,29 @@
+[0.012s] Invoking command in '/sim_ws/src/build/pure_pursuit_sim': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /sim_ws/src/build/pure_pursuit_sim -- -j12 -l12
+[0.065s] [100%] Built target pure_pursuit_node
+[0.073s] Invoked command in '/sim_ws/src/build/pure_pursuit_sim' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /sim_ws/src/build/pure_pursuit_sim -- -j12 -l12
+[0.099s] Invoking command in '/sim_ws/src/build/pure_pursuit_sim': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /sim_ws/src/build/pure_pursuit_sim
+[0.106s] -- Install configuration: ""
+[0.106s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/lib/pure_pursuit_sim/pure_pursuit_node
+[0.106s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/pythonpath.sh
+[0.106s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/pythonpath.dsv
+[0.106s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/lib/python3.8/site-packages/pure_pursuit_sim
+[0.106s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/lib/python3.8/site-packages/pure_pursuit_sim/__init__.py
+[0.133s] Listing '/sim_ws/src/install/pure_pursuit_sim/lib/python3.8/site-packages/pure_pursuit_sim'...
+[0.137s] -- Installing: /sim_ws/src/install/pure_pursuit_sim/lib/pure_pursuit_sim/pure_pursuit_node.py
+[0.137s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/lib/pure_pursuit_sim/waypoint_logger.py
+[0.137s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/ament_index/resource_index/package_run_dependencies/pure_pursuit_sim
+[0.137s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/ament_index/resource_index/parent_prefix_path/pure_pursuit_sim
+[0.138s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/ament_prefix_path.sh
+[0.138s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/ament_prefix_path.dsv
+[0.138s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/path.sh
+[0.138s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/path.dsv
+[0.138s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/local_setup.bash
+[0.138s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/local_setup.sh
+[0.138s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/local_setup.zsh
+[0.138s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/local_setup.dsv
+[0.138s] -- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/package.dsv
+[0.138s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/ament_index/resource_index/packages/pure_pursuit_sim
+[0.138s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/cmake/pure_pursuit_simConfig.cmake
+[0.139s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/cmake/pure_pursuit_simConfig-version.cmake
+[0.139s] -- Up-to-date: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/package.xml
+[0.140s] Invoked command in '/sim_ws/src/build/pure_pursuit_sim' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /sim_ws/src/build/pure_pursuit_sim

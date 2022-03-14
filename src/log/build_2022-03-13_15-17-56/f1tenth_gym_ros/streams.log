@@ -1,0 +1,44 @@
+[0.212s] Invoking command in '/sim_ws/src/f1tenth_gym_ros': PYTHONPATH=/sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/f1tenth_gym_ros build --build-base /sim_ws/src/build/f1tenth_gym_ros/build install --prefix /sim_ws/src/install/f1tenth_gym_ros --record /sim_ws/src/build/f1tenth_gym_ros/install.log --single-version-externally-managed
+[0.398s] running egg_info
+[0.399s] creating ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info
+[0.399s] writing ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/PKG-INFO
+[0.399s] writing dependency_links to ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/dependency_links.txt
+[0.399s] writing entry points to ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/entry_points.txt
+[0.400s] writing requirements to ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/requires.txt
+[0.400s] writing top-level names to ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/top_level.txt
+[0.401s] writing manifest file '../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'
+[0.445s] reading manifest file '../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'
+[0.446s] writing manifest file '../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'
+[0.446s] running build
+[0.446s] running build_py
+[0.446s] creating /sim_ws/src/build/f1tenth_gym_ros/build
+[0.446s] creating /sim_ws/src/build/f1tenth_gym_ros/build/lib
+[0.446s] creating /sim_ws/src/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros
+[0.446s] copying f1tenth_gym_ros/__init__.py -> /sim_ws/src/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros
+[0.446s] copying f1tenth_gym_ros/gym_bridge.py -> /sim_ws/src/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros
+[0.447s] running install
+[0.448s] running install_lib
+[0.448s] creating /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros
+[0.449s] copying /sim_ws/src/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/__init__.py -> /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros
+[0.449s] copying /sim_ws/src/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/gym_bridge.py -> /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros
+[0.449s] byte-compiling /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/__init__.py to __init__.cpython-38.pyc
+[0.450s] byte-compiling /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/gym_bridge.py to gym_bridge.cpython-38.pyc
+[0.453s] running install_data
+[0.453s] creating /sim_ws/src/install/f1tenth_gym_ros/share/ament_index
+[0.453s] creating /sim_ws/src/install/f1tenth_gym_ros/share/ament_index/resource_index
+[0.453s] creating /sim_ws/src/install/f1tenth_gym_ros/share/ament_index/resource_index/packages
+[0.453s] copying resource/f1tenth_gym_ros -> /sim_ws/src/install/f1tenth_gym_ros/share/ament_index/resource_index/packages
+[0.454s] copying package.xml -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros
+[0.454s] creating /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[0.454s] copying launch/gym_bridge_launch.py -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[0.454s] copying launch/ego_racecar.xacro -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[0.454s] copying launch/opp_racecar.xacro -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[0.455s] copying launch/gym_bridge.rviz -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[0.455s] creating /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/config
+[0.455s] copying config/sim.yaml -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/config
+[0.455s] running install_egg_info
+[0.456s] Copying ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info to /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros-0.0.0-py3.8.egg-info
+[0.457s] running install_scripts
+[0.474s] Installing gym_bridge script to /sim_ws/src/install/f1tenth_gym_ros/lib/f1tenth_gym_ros
+[0.474s] writing list of installed files to '/sim_ws/src/build/f1tenth_gym_ros/install.log'
+[0.499s] Invoked command in '/sim_ws/src/f1tenth_gym_ros' returned '0': PYTHONPATH=/sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/f1tenth_gym_ros build --build-base /sim_ws/src/build/f1tenth_gym_ros/build install --prefix /sim_ws/src/install/f1tenth_gym_ros --record /sim_ws/src/build/f1tenth_gym_ros/install.log --single-version-externally-managed

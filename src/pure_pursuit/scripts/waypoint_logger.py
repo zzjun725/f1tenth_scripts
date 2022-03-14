@@ -18,7 +18,7 @@ class WaypointsLogger(Node):
     """
     def __init__(self):
         super().__init__('WaypointsLogger')
-        self.log = open(strftime(home+'/log/wp-%Y-%m-%d-%H-%M-%S',gmtime())+'.csv', 'w')
+        self.log = open(strftime(home+'/wp_log/wp-%Y-%m-%d-%H-%M-%S',gmtime())+'.csv', 'w')
         self.odom_subscriber = self.create_subscription(
             Odometry, 'pf/pose/odom', self.logger_callback, 10)
         self.times = 0
@@ -30,21 +30,21 @@ class WaypointsLogger(Node):
         
         else:
             self.times = 0
-    quaternion = np.array([data.pose.pose.orientation.x, 
-                           data.pose.pose.orientation.y, 
-                           data.pose.pose.orientation.z, 
-                           data.pose.pose.orientation.w])
+            quaternion = np.array([data.pose.pose.orientation.x, 
+                                data.pose.pose.orientation.y, 
+                                data.pose.pose.orientation.z, 
+                                data.pose.pose.orientation.w])
 
-    euler = tf.transformations.euler_from_quaternion(quaternion)
-    speed = np.linalg.norm(np.array([data.twist.twist.linear.x, 
-                              data.twist.twist.linear.y, 
-                              data.twist.twist.linear.z]),2)
+            euler = tf.transformations.euler_from_quaternion(quaternion)
+            speed = np.linalg.norm(np.array([data.twist.twist.linear.x, 
+                                    data.twist.twist.linear.y, 
+                                    data.twist.twist.linear.z]),2)
 
 
-    self.log.write('%f, %f, %f, %f\n' % (data.pose.pose.position.x,
-                                     data.pose.pose.position.y,
-                                     euler[2],
-                                     speed))
+            self.log.write('%f, %f, %f, %f\n' % (data.pose.pose.position.x,
+                                            data.pose.pose.position.y,
+                                            euler[2],
+                                            speed))
 
 def main(args=None):
     rclpy.init(args=args)

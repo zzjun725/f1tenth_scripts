@@ -1,0 +1,6 @@
+Invoking command in '/sim_ws/src/build/gap_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /sim_ws/src/gap_follow -DCMAKE_INSTALL_PREFIX=/sim_ws/src/install/gap_follow
+Invoked command in '/sim_ws/src/build/gap_follow' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /sim_ws/src/gap_follow -DCMAKE_INSTALL_PREFIX=/sim_ws/src/install/gap_follow
+Invoking command in '/sim_ws/src/build/gap_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /sim_ws/src/build/gap_follow -- -j12 -l12
+Invoked command in '/sim_ws/src/build/gap_follow' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /sim_ws/src/build/gap_follow -- -j12 -l12
+Invoking command in '/sim_ws/src/build/gap_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /sim_ws/src/build/gap_follow
+Invoked command in '/sim_ws/src/build/gap_follow' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /sim_ws/src/build/gap_follow

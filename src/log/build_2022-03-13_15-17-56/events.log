@@ -1,0 +1,658 @@
+[0.000000] (-) TimerEvent: {}
+[0.000662] (f1tenth_gym_ros) JobQueued: {'identifier': 'f1tenth_gym_ros', 'dependencies': OrderedDict()}
+[0.000833] (gap_follow) JobQueued: {'identifier': 'gap_follow', 'dependencies': OrderedDict()}
+[0.000874] (pure_pursuit) JobQueued: {'identifier': 'pure_pursuit', 'dependencies': OrderedDict()}
+[0.000895] (pure_pursuit_sim) JobQueued: {'identifier': 'pure_pursuit_sim', 'dependencies': OrderedDict()}
+[0.000924] (safety_node) JobQueued: {'identifier': 'safety_node', 'dependencies': OrderedDict()}
+[0.000943] (wall_follow) JobQueued: {'identifier': 'wall_follow', 'dependencies': OrderedDict()}
+[0.000981] (f1tenth_gym_ros) JobStarted: {'identifier': 'f1tenth_gym_ros'}
+[0.010050] (gap_follow) JobStarted: {'identifier': 'gap_follow'}
+[0.016086] (pure_pursuit) JobStarted: {'identifier': 'pure_pursuit'}
+[0.017940] (pure_pursuit_sim) JobStarted: {'identifier': 'pure_pursuit_sim'}
+[0.021926] (safety_node) JobStarted: {'identifier': 'safety_node'}
+[0.025692] (wall_follow) JobStarted: {'identifier': 'wall_follow'}
+[0.099839] (-) TimerEvent: {}
+[0.195377] (gap_follow) JobProgress: {'identifier': 'gap_follow', 'progress': 'cmake'}
+[0.195530] (gap_follow) Command: {'cmd': ['/usr/bin/cmake', '/sim_ws/src/gap_follow', '-DCMAKE_INSTALL_PREFIX=/sim_ws/src/install/gap_follow'], 'cwd': '/sim_ws/src/build/gap_follow', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/gap_follow'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.198529] (pure_pursuit) JobProgress: {'identifier': 'pure_pursuit', 'progress': 'cmake'}
+[0.199362] (pure_pursuit) Command: {'cmd': ['/usr/bin/cmake', '/sim_ws/src/pure_pursuit', '-DCMAKE_INSTALL_PREFIX=/sim_ws/src/install/pure_pursuit'], 'cwd': '/sim_ws/src/build/pure_pursuit', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/pure_pursuit'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.200574] (-) TimerEvent: {}
+[0.200803] (pure_pursuit_sim) JobProgress: {'identifier': 'pure_pursuit_sim', 'progress': 'cmake'}
+[0.201066] (pure_pursuit_sim) Command: {'cmd': ['/usr/bin/cmake', '/sim_ws/src/pure_pursuit_sim', '-DCMAKE_INSTALL_PREFIX=/sim_ws/src/install/pure_pursuit_sim'], 'cwd': '/sim_ws/src/build/pure_pursuit_sim', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/pure_pursuit_sim'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.203023] (safety_node) JobProgress: {'identifier': 'safety_node', 'progress': 'cmake'}
+[0.203178] (safety_node) Command: {'cmd': ['/usr/bin/cmake', '/sim_ws/src/safety_node', '-DCMAKE_INSTALL_PREFIX=/sim_ws/src/install/safety_node'], 'cwd': '/sim_ws/src/build/safety_node', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/safety_node'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.205538] (wall_follow) JobProgress: {'identifier': 'wall_follow', 'progress': 'cmake'}
+[0.205922] (wall_follow) Command: {'cmd': ['/usr/bin/cmake', '/sim_ws/src/wall_follow', '-DCMAKE_INSTALL_PREFIX=/sim_ws/src/install/wall_follow'], 'cwd': '/sim_ws/src/build/wall_follow', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/wall_follow'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.211041] (f1tenth_gym_ros) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/f1tenth_gym_ros', 'build', '--build-base', '/sim_ws/src/build/f1tenth_gym_ros/build', 'install', '--prefix', '/sim_ws/src/install/f1tenth_gym_ros', '--record', '/sim_ws/src/build/f1tenth_gym_ros/install.log', '--single-version-externally-managed'], 'cwd': '/sim_ws/src/f1tenth_gym_ros', 'env': {'TMUX': '/tmp//tmux-0/default,511,0', 'HOSTNAME': 'e5f20eb0e3b3', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/root', 'OLDPWD': '/sim_ws', 'ROS_PYTHON_VERSION': '3', 'ROS_DISTRO': 'foxy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'NVIDIA_DRIVER_CAPABILITIES': 'graphics', 'TERM': 'screen', 'ROS_LOCALHOST_ONLY': '0', 'QT_X11_NO_MITSHM': '1', 'PATH': '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':1', 'LANG': 'C.UTF-8', 'XAUTHORITY': '/tmp/.docker1lk3ryn6.xauth', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/opt/ros/foxy', 'SHELL': '/bin/bash', 'PWD': '/sim_ws/src/build/f1tenth_gym_ros', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'TMUX_PANE': '%0'}, 'shell': False}
+[0.242057] (pure_pursuit) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[0.244183] (pure_pursuit_sim) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[0.245114] (gap_follow) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[0.246222] (safety_node) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[0.255506] (wall_follow) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[0.286358] (pure_pursuit) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[0.288834] (pure_pursuit_sim) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[0.289378] (safety_node) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[0.290112] (pure_pursuit) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.292637] (gap_follow) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[0.293255] (safety_node) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.293438] (pure_pursuit_sim) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.296494] (gap_follow) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.300702] (-) TimerEvent: {}
+[0.301891] (wall_follow) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[0.305662] (wall_follow) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.343156] (pure_pursuit) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.343954] (pure_pursuit) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.346297] (pure_pursuit_sim) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.346528] (safety_node) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.346966] (pure_pursuit_sim) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.347657] (safety_node) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.348891] (gap_follow) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.349686] (gap_follow) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.359829] (wall_follow) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.360980] (wall_follow) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.396623] (pure_pursuit) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.399393] (f1tenth_gym_ros) StdoutLine: {'line': b'running egg_info\n'}
+[0.399942] (f1tenth_gym_ros) StdoutLine: {'line': b'creating ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info\n'}
+[0.400097] (f1tenth_gym_ros) StdoutLine: {'line': b'writing ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/PKG-INFO\n'}
+[0.400359] (f1tenth_gym_ros) StdoutLine: {'line': b'writing dependency_links to ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/dependency_links.txt\n'}
+[0.400564] (f1tenth_gym_ros) StdoutLine: {'line': b'writing entry points to ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/entry_points.txt\n'}
+[0.400771] (-) TimerEvent: {}
+[0.400971] (f1tenth_gym_ros) StdoutLine: {'line': b'writing requirements to ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/requires.txt\n'}
+[0.401078] (f1tenth_gym_ros) StdoutLine: {'line': b'writing top-level names to ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/top_level.txt\n'}
+[0.402235] (f1tenth_gym_ros) StdoutLine: {'line': b"writing manifest file '../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'\n"}
+[0.402870] (pure_pursuit_sim) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.403611] (safety_node) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.404576] (gap_follow) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.407239] (pure_pursuit) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.407525] (pure_pursuit) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.409680] (pure_pursuit) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.412864] (pure_pursuit_sim) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.413216] (pure_pursuit_sim) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.415138] (gap_follow) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.415315] (pure_pursuit_sim) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.415529] (gap_follow) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.417765] (wall_follow) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.418090] (gap_follow) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.421752] (safety_node) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.422243] (safety_node) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.425681] (safety_node) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.427796] (wall_follow) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.428083] (wall_follow) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.430292] (wall_follow) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.446175] (f1tenth_gym_ros) StdoutLine: {'line': b"reading manifest file '../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'\n"}
+[0.446871] (f1tenth_gym_ros) StdoutLine: {'line': b"writing manifest file '../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'\n"}
+[0.447045] (f1tenth_gym_ros) StdoutLine: {'line': b'running build\n'}
+[0.447196] (f1tenth_gym_ros) StdoutLine: {'line': b'running build_py\n'}
+[0.447334] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/src/build/f1tenth_gym_ros/build\n'}
+[0.447442] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/src/build/f1tenth_gym_ros/build/lib\n'}
+[0.447543] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/src/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros\n'}
+[0.447654] (f1tenth_gym_ros) StdoutLine: {'line': b'copying f1tenth_gym_ros/__init__.py -> /sim_ws/src/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros\n'}
+[0.447745] (f1tenth_gym_ros) StdoutLine: {'line': b'copying f1tenth_gym_ros/gym_bridge.py -> /sim_ws/src/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros\n'}
+[0.448287] (f1tenth_gym_ros) StdoutLine: {'line': b'running install\n'}
+[0.449024] (f1tenth_gym_ros) StdoutLine: {'line': b'running install_lib\n'}
+[0.449808] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros\n'}
+[0.449937] (f1tenth_gym_ros) StdoutLine: {'line': b'copying /sim_ws/src/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/__init__.py -> /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros\n'}
+[0.450051] (f1tenth_gym_ros) StdoutLine: {'line': b'copying /sim_ws/src/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/gym_bridge.py -> /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros\n'}
+[0.450350] (f1tenth_gym_ros) StdoutLine: {'line': b'byte-compiling /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/__init__.py to __init__.cpython-38.pyc\n'}
+[0.451331] (f1tenth_gym_ros) StdoutLine: {'line': b'byte-compiling /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/gym_bridge.py to gym_bridge.cpython-38.pyc\n'}
+[0.453996] (f1tenth_gym_ros) StdoutLine: {'line': b'running install_data\n'}
+[0.454402] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/src/install/f1tenth_gym_ros/share/ament_index\n'}
+[0.454602] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/src/install/f1tenth_gym_ros/share/ament_index/resource_index\n'}
+[0.454752] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/src/install/f1tenth_gym_ros/share/ament_index/resource_index/packages\n'}
+[0.454875] (f1tenth_gym_ros) StdoutLine: {'line': b'copying resource/f1tenth_gym_ros -> /sim_ws/src/install/f1tenth_gym_ros/share/ament_index/resource_index/packages\n'}
+[0.454967] (f1tenth_gym_ros) StdoutLine: {'line': b'copying package.xml -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros\n'}
+[0.455062] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch\n'}
+[0.455158] (f1tenth_gym_ros) StdoutLine: {'line': b'copying launch/gym_bridge_launch.py -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch\n'}
+[0.455590] (f1tenth_gym_ros) StdoutLine: {'line': b'copying launch/ego_racecar.xacro -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch\n'}
+[0.455787] (f1tenth_gym_ros) StdoutLine: {'line': b'copying launch/opp_racecar.xacro -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch\n'}
+[0.455951] (f1tenth_gym_ros) StdoutLine: {'line': b'copying launch/gym_bridge.rviz -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch\n'}
+[0.456136] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/config\n'}
+[0.456293] (f1tenth_gym_ros) StdoutLine: {'line': b'copying config/sim.yaml -> /sim_ws/src/install/f1tenth_gym_ros/share/f1tenth_gym_ros/config\n'}
+[0.456430] (f1tenth_gym_ros) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.457836] (f1tenth_gym_ros) StdoutLine: {'line': b'Copying ../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info to /sim_ws/src/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros-0.0.0-py3.8.egg-info\n'}
+[0.458558] (f1tenth_gym_ros) StdoutLine: {'line': b'running install_scripts\n'}
+[0.472405] (pure_pursuit) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.473375] (pure_pursuit) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.475077] (f1tenth_gym_ros) StdoutLine: {'line': b'Installing gym_bridge script to /sim_ws/src/install/f1tenth_gym_ros/lib/f1tenth_gym_ros\n'}
+[0.475373] (f1tenth_gym_ros) StdoutLine: {'line': b"writing list of installed files to '/sim_ws/src/build/f1tenth_gym_ros/install.log'\n"}
+[0.479984] (pure_pursuit_sim) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.480172] (gap_follow) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.481149] (gap_follow) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.481426] (pure_pursuit_sim) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.492953] (safety_node) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.493224] (wall_follow) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.493865] (safety_node) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.494037] (wall_follow) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.500303] (f1tenth_gym_ros) CommandEnded: {'returncode': 0}
+[0.500849] (-) TimerEvent: {}
+[0.511241] (f1tenth_gym_ros) JobEnded: {'identifier': 'f1tenth_gym_ros', 'rc': 0}
+[0.536998] (pure_pursuit) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.543953] (gap_follow) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.545306] (pure_pursuit_sim) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.546997] (pure_pursuit) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.547415] (pure_pursuit) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.549298] (pure_pursuit) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.554018] (gap_follow) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.554446] (gap_follow) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.555286] (pure_pursuit_sim) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.555750] (pure_pursuit_sim) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.556294] (gap_follow) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.556769] (safety_node) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.557485] (wall_follow) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.557856] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.566538] (safety_node) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.566982] (safety_node) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.568812] (safety_node) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.569454] (wall_follow) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.569789] (pure_pursuit) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") \n'}
+[0.569977] (wall_follow) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.570122] (pure_pursuit) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.571366] (wall_follow) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.576591] (gap_follow) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") \n'}
+[0.576753] (gap_follow) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.580187] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") \n'}
+[0.580342] (pure_pursuit_sim) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.588844] (safety_node) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") \n'}
+[0.589108] (safety_node) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.592392] (wall_follow) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") \n'}
+[0.592552] (wall_follow) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.600931] (-) TimerEvent: {}
+[0.701180] (-) TimerEvent: {}
+[0.727555] (pure_pursuit) StdoutLine: {'line': b'-- Found rclcpp: 2.3.1 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.735543] (gap_follow) StdoutLine: {'line': b'-- Found rclcpp: 2.3.1 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.737257] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found rclcpp: 2.3.1 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.745661] (safety_node) StdoutLine: {'line': b'-- Found rclcpp: 2.3.1 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.752603] (wall_follow) StdoutLine: {'line': b'-- Found rclcpp: 2.3.1 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.766031] (pure_pursuit) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.771315] (gap_follow) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.771787] (pure_pursuit) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.773418] (pure_pursuit_sim) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.777030] (gap_follow) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.779097] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.782405] (safety_node) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.788019] (safety_node) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.788926] (wall_follow) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.794894] (wall_follow) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.801325] (-) TimerEvent: {}
+[0.838639] (pure_pursuit) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[0.840615] (gap_follow) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[0.844861] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[0.851014] (safety_node) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[0.858472] (wall_follow) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[0.865685] (gap_follow) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[0.869791] (pure_pursuit) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[0.874730] (safety_node) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[0.874970] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[0.883033] (wall_follow) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[0.901453] (-) TimerEvent: {}
+[0.932866] (gap_follow) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.945638] (pure_pursuit) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.950419] (wall_follow) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.961500] (pure_pursuit_sim) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.962119] (safety_node) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.980269] (gap_follow) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[0.981482] (gap_follow) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.982275] (gap_follow) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.992143] (pure_pursuit) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[0.993405] (pure_pursuit) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.994213] (pure_pursuit) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.998146] (wall_follow) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[0.999415] (wall_follow) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.000144] (wall_follow) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.001534] (-) TimerEvent: {}
+[1.017599] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[1.018317] (safety_node) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[1.018834] (pure_pursuit_sim) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.019568] (safety_node) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.019670] (pure_pursuit_sim) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.020271] (safety_node) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.038389] (gap_follow) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.038675] (gap_follow) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.049439] (pure_pursuit) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.049637] (pure_pursuit) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.057609] (wall_follow) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.057901] (wall_follow) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.076308] (safety_node) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.076591] (pure_pursuit_sim) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.076750] (safety_node) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.076844] (pure_pursuit_sim) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.100289] (gap_follow) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[1.100872] (gap_follow) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[1.101606] (-) TimerEvent: {}
+[1.105948] (pure_pursuit) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[1.106251] (pure_pursuit) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[1.118261] (wall_follow) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[1.118613] (wall_follow) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[1.133381] (safety_node) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[1.133589] (pure_pursuit_sim) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[1.133669] (pure_pursuit_sim) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[1.133737] (safety_node) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[1.144383] (gap_follow) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[1.144641] (gap_follow) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[1.149916] (pure_pursuit) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[1.150103] (pure_pursuit) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[1.162450] (wall_follow) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[1.162644] (wall_follow) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[1.177238] (pure_pursuit_sim) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[1.177556] (safety_node) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[1.177639] (safety_node) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[1.177705] (pure_pursuit_sim) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[1.200086] (gap_follow) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[1.201062] (gap_follow) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.201670] (-) TimerEvent: {}
+[1.202586] (pure_pursuit) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[1.203579] (pure_pursuit) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.218365] (wall_follow) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[1.219227] (wall_follow) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.230958] (safety_node) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[1.231157] (pure_pursuit_sim) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[1.231801] (safety_node) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.231930] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.301791] (-) TimerEvent: {}
+[1.330637] (pure_pursuit) StdoutLine: {'line': b'-- Found rclpy: 1.0.5 (/opt/ros/foxy/share/rclpy/cmake)\n'}
+[1.331354] (gap_follow) StdoutLine: {'line': b'-- Found rclpy: 1.0.5 (/opt/ros/foxy/share/rclpy/cmake)\n'}
+[1.331798] (pure_pursuit) StdoutLine: {'line': b'-- Found geometry_msgs: 2.0.4 (/opt/ros/foxy/share/geometry_msgs/cmake)\n'}
+[1.332619] (gap_follow) StdoutLine: {'line': b'-- Found geometry_msgs: 2.0.4 (/opt/ros/foxy/share/geometry_msgs/cmake)\n'}
+[1.346817] (wall_follow) StdoutLine: {'line': b'-- Found rclpy: 1.0.5 (/opt/ros/foxy/share/rclpy/cmake)\n'}
+[1.348002] (wall_follow) StdoutLine: {'line': b'-- Found geometry_msgs: 2.0.4 (/opt/ros/foxy/share/geometry_msgs/cmake)\n'}
+[1.359167] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found rclpy: 1.0.5 (/opt/ros/foxy/share/rclpy/cmake)\n'}
+[1.359833] (safety_node) StdoutLine: {'line': b'-- Found rclpy: 1.0.5 (/opt/ros/foxy/share/rclpy/cmake)\n'}
+[1.360253] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found geometry_msgs: 2.0.4 (/opt/ros/foxy/share/geometry_msgs/cmake)\n'}
+[1.361092] (safety_node) StdoutLine: {'line': b'-- Found nav_msgs: 2.0.4 (/opt/ros/foxy/share/nav_msgs/cmake)\n'}
+[1.361185] (pure_pursuit) StdoutLine: {'line': b'-- Found nav_msgs: 2.0.4 (/opt/ros/foxy/share/nav_msgs/cmake)\n'}
+[1.361774] (gap_follow) StdoutLine: {'line': b'-- Found nav_msgs: 2.0.4 (/opt/ros/foxy/share/nav_msgs/cmake)\n'}
+[1.377966] (wall_follow) StdoutLine: {'line': b'-- Found nav_msgs: 2.0.4 (/opt/ros/foxy/share/nav_msgs/cmake)\n'}
+[1.389808] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found nav_msgs: 2.0.4 (/opt/ros/foxy/share/nav_msgs/cmake)\n'}
+[1.401891] (-) TimerEvent: {}
+[1.421909] (pure_pursuit) StdoutLine: {'line': b'-- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)\n'}
+[1.423906] (gap_follow) StdoutLine: {'line': b'-- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)\n'}
+[1.439353] (wall_follow) StdoutLine: {'line': b'-- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)\n'}
+[1.451456] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)\n'}
+[1.451572] (pure_pursuit) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.4 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[1.453613] (gap_follow) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.4 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[1.461582] (safety_node) StdoutLine: {'line': b'-- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)\n'}
+[1.468829] (wall_follow) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.4 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[1.481126] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.4 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[1.491349] (safety_node) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.4 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[1.501996] (-) TimerEvent: {}
+[1.511927] (pure_pursuit) StdoutLine: {'line': b'-- Found visualization_msgs: 2.0.4 (/opt/ros/foxy/share/visualization_msgs/cmake)\n'}
+[1.538483] (gap_follow) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.6 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[1.542440] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found visualization_msgs: 2.0.4 (/opt/ros/foxy/share/visualization_msgs/cmake)\n'}
+[1.553136] (wall_follow) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.6 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[1.575273] (pure_pursuit) StdoutLine: {'line': b'-- Found tf2_ros: 0.13.10 (/opt/ros/foxy/share/tf2_ros/cmake)\n'}
+[1.576421] (safety_node) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.6 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[1.602092] (-) TimerEvent: {}
+[1.602847] (gap_follow) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.603789] (gap_follow) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.603983] (gap_follow) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /sim_ws/src/gap_follow/include\n'}
+[1.604062] (gap_follow) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.604784] (gap_follow) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.604868] (gap_follow) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.605212] (gap_follow) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.605651] (gap_follow) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.606039] (gap_follow) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257\n"}
+[1.606169] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found tf2_ros: 0.13.10 (/opt/ros/foxy/share/tf2_ros/cmake)\n'}
+[1.606748] (gap_follow) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.606846] (gap_follow) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.607158] (gap_follow) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.609855] (gap_follow) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.617970] (wall_follow) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.618215] (gap_follow) StdoutLine: {'line': b'-- Generating done\n'}
+[1.618898] (wall_follow) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.619146] (wall_follow) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /sim_ws/src/wall_follow/include\n'}
+[1.619269] (wall_follow) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.619342] (gap_follow) StdoutLine: {'line': b'-- Build files have been written to: /sim_ws/src/build/gap_follow\n'}
+[1.619840] (wall_follow) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.619939] (wall_follow) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.620287] (wall_follow) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.620770] (wall_follow) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.621183] (wall_follow) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257\n"}
+[1.621771] (wall_follow) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.621888] (wall_follow) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.622205] (wall_follow) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.625012] (wall_follow) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.626230] (gap_follow) CommandEnded: {'returncode': 0}
+[1.626828] (gap_follow) JobProgress: {'identifier': 'gap_follow', 'progress': 'build'}
+[1.627909] (gap_follow) Command: {'cmd': ['/usr/bin/cmake', '--build', '/sim_ws/src/build/gap_follow', '--', '-j12', '-l12'], 'cwd': '/sim_ws/src/build/gap_follow', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/gap_follow'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.633480] (wall_follow) StdoutLine: {'line': b'-- Generating done\n'}
+[1.634610] (wall_follow) StdoutLine: {'line': b'-- Build files have been written to: /sim_ws/src/build/wall_follow\n'}
+[1.641549] (wall_follow) CommandEnded: {'returncode': 0}
+[1.642241] (safety_node) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.644365] (wall_follow) JobProgress: {'identifier': 'wall_follow', 'progress': 'build'}
+[1.644480] (wall_follow) Command: {'cmd': ['/usr/bin/cmake', '--build', '/sim_ws/src/build/wall_follow', '--', '-j12', '-l12'], 'cwd': '/sim_ws/src/build/wall_follow', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/wall_follow'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.645725] (safety_node) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.646013] (safety_node) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /sim_ws/src/safety_node/include\n'}
+[1.646295] (safety_node) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.646436] (safety_node) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.646546] (safety_node) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.646654] (safety_node) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.646761] (safety_node) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.646865] (safety_node) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257\n"}
+[1.646984] (safety_node) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.647105] (safety_node) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.647210] (safety_node) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.649435] (safety_node) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.658111] (safety_node) StdoutLine: {'line': b'-- Generating done\n'}
+[1.659307] (safety_node) StdoutLine: {'line': b'-- Build files have been written to: /sim_ws/src/build/safety_node\n'}
+[1.661076] (gap_follow) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target reactive_node\x1b[0m\n'}
+[1.666402] (safety_node) CommandEnded: {'returncode': 0}
+[1.666922] (safety_node) JobProgress: {'identifier': 'safety_node', 'progress': 'build'}
+[1.667352] (safety_node) Command: {'cmd': ['/usr/bin/cmake', '--build', '/sim_ws/src/build/safety_node', '--', '-j12', '-l12'], 'cwd': '/sim_ws/src/build/safety_node', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/safety_node'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.676743] (wall_follow) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wall_follow_node\x1b[0m\n'}
+[1.690835] (gap_follow) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/reactive_node.dir/src/reactive_node.cpp.o\x1b[0m\n'}
+[1.699617] (safety_node) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target safety_node\x1b[0m\n'}
+[1.702168] (-) TimerEvent: {}
+[1.706406] (wall_follow) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o\x1b[0m\n'}
+[1.728409] (safety_node) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/safety_node.dir/src/safety_node.cpp.o\x1b[0m\n'}
+[1.802273] (-) TimerEvent: {}
+[1.893946] (pure_pursuit) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.6 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[1.902360] (-) TimerEvent: {}
+[1.929718] (pure_pursuit_sim) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.6 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[1.959256] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.960158] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.960356] (pure_pursuit) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /sim_ws/src/pure_pursuit/include\n'}
+[1.960503] (pure_pursuit) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.961119] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.961243] (pure_pursuit) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.961506] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.961913] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.962283] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257\n"}
+[1.962908] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.963063] (pure_pursuit) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.963289] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.966356] (pure_pursuit) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.979932] (pure_pursuit) StdoutLine: {'line': b'-- Generating done\n'}
+[1.981264] (pure_pursuit) StdoutLine: {'line': b'-- Build files have been written to: /sim_ws/src/build/pure_pursuit\n'}
+[1.989377] (pure_pursuit) CommandEnded: {'returncode': 0}
+[1.989966] (pure_pursuit) JobProgress: {'identifier': 'pure_pursuit', 'progress': 'build'}
+[1.990323] (pure_pursuit) Command: {'cmd': ['/usr/bin/cmake', '--build', '/sim_ws/src/build/pure_pursuit', '--', '-j12', '-l12'], 'cwd': '/sim_ws/src/build/pure_pursuit', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/pure_pursuit'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.995329] (pure_pursuit_sim) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.996113] (pure_pursuit_sim) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.996318] (pure_pursuit_sim) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /sim_ws/src/pure_pursuit_sim/include\n'}
+[1.996410] (pure_pursuit_sim) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.997114] (pure_pursuit_sim) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.997205] (pure_pursuit_sim) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.997568] (pure_pursuit_sim) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.998004] (pure_pursuit_sim) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.998380] (pure_pursuit_sim) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257\n"}
+[1.999008] (pure_pursuit_sim) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.999107] (pure_pursuit_sim) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.999382] (pure_pursuit_sim) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.002480] (-) TimerEvent: {}
+[2.002750] (pure_pursuit_sim) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.015333] (pure_pursuit_sim) StdoutLine: {'line': b'-- Generating done\n'}
+[2.016760] (pure_pursuit_sim) StdoutLine: {'line': b'-- Build files have been written to: /sim_ws/src/build/pure_pursuit_sim\n'}
+[2.024678] (pure_pursuit_sim) CommandEnded: {'returncode': 0}
+[2.025585] (pure_pursuit_sim) JobProgress: {'identifier': 'pure_pursuit_sim', 'progress': 'build'}
+[2.025954] (pure_pursuit_sim) Command: {'cmd': ['/usr/bin/cmake', '--build', '/sim_ws/src/build/pure_pursuit_sim', '--', '-j12', '-l12'], 'cwd': '/sim_ws/src/build/pure_pursuit_sim', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/pure_pursuit_sim'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[2.028063] (pure_pursuit) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target pure_pursuit_node\x1b[0m\n'}
+[2.058123] (pure_pursuit) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.o\x1b[0m\n'}
+[2.060792] (pure_pursuit_sim) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target pure_pursuit_node\x1b[0m\n'}
+[2.092500] (pure_pursuit_sim) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.o\x1b[0m\n'}
+[2.102605] (-) TimerEvent: {}
+[2.202914] (-) TimerEvent: {}
+[2.303205] (-) TimerEvent: {}
+[2.403524] (-) TimerEvent: {}
+[2.503829] (-) TimerEvent: {}
+[2.604151] (-) TimerEvent: {}
+[2.704451] (-) TimerEvent: {}
+[2.724946] (gap_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/gap_follow/src/reactive_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ReactiveFollowGap::preprocess_lidar(float*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.725126] (gap_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/gap_follow/src/reactive_node.cpp:24:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kranges\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.725201] (gap_follow) StderrLine: {'line': b'   24 |     void preprocess_lidar(\x1b[01;35m\x1b[Kfloat* ranges\x1b[m\x1b[K)\n'}
+[2.725265] (gap_follow) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[2.725325] (gap_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/gap_follow/src/reactive_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ReactiveFollowGap::find_max_gap(float*, int*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.725388] (gap_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/gap_follow/src/reactive_node.cpp:32:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kranges\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.725448] (gap_follow) StderrLine: {'line': b'   32 |     void find_max_gap(\x1b[01;35m\x1b[Kfloat* ranges\x1b[m\x1b[K, int* indice)\n'}
+[2.725507] (gap_follow) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[2.725572] (gap_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/gap_follow/src/reactive_node.cpp:32:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kindice\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.725631] (gap_follow) StderrLine: {'line': b'   32 |     void find_max_gap(float* ranges, \x1b[01;35m\x1b[Kint* indice\x1b[m\x1b[K)\n'}
+[2.725689] (gap_follow) StderrLine: {'line': b'      |                                      \x1b[01;35m\x1b[K~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[2.725747] (gap_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/gap_follow/src/reactive_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ReactiveFollowGap::find_best_point(float*, int*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.725806] (gap_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/gap_follow/src/reactive_node.cpp:38:33:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kranges\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.725864] (gap_follow) StderrLine: {'line': b'   38 |     void find_best_point(\x1b[01;35m\x1b[Kfloat* ranges\x1b[m\x1b[K, int* indice)\n'}
+[2.725921] (gap_follow) StderrLine: {'line': b'      |                          \x1b[01;35m\x1b[K~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[2.725978] (gap_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/gap_follow/src/reactive_node.cpp:38:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kindice\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.726039] (gap_follow) StderrLine: {'line': b'   38 |     void find_best_point(float* ranges, \x1b[01;35m\x1b[Kint* indice\x1b[m\x1b[K)\n'}
+[2.726097] (gap_follow) StderrLine: {'line': b'      |                                         \x1b[01;35m\x1b[K~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[2.726943] (gap_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/gap_follow/src/reactive_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ReactiveFollowGap::lidar_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.727039] (gap_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/gap_follow/src/reactive_node.cpp:47:75:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kscan_msg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.727108] (gap_follow) StderrLine: {'line': b'   47 |     void lidar_callback(\x1b[01;35m\x1b[Kconst sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg\x1b[m\x1b[K)\n'}
+[2.727170] (gap_follow) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[2.745163] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kdouble WallFollow::get_range(float*, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.745333] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:30:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krange_data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.745407] (wall_follow) StderrLine: {'line': b'   30 |     double get_range(\x1b[01;35m\x1b[Kfloat* range_data\x1b[m\x1b[K, double angle)\n'}
+[2.745472] (wall_follow) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~~~~~~~^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.745534] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:30:48:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kangle\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.745595] (wall_follow) StderrLine: {'line': b'   30 |     double get_range(float* range_data, \x1b[01;35m\x1b[Kdouble angle\x1b[m\x1b[K)\n'}
+[2.745656] (wall_follow) StderrLine: {'line': b'      |                                         \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[2.745715] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kdouble WallFollow::get_error(float*, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.745779] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:47:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krange_data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.745838] (wall_follow) StderrLine: {'line': b'   47 |     double get_error(\x1b[01;35m\x1b[Kfloat* range_data\x1b[m\x1b[K, double dist)\n'}
+[2.745896] (wall_follow) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~~~~~~~^~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.745954] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:47:48:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kdist\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.746013] (wall_follow) StderrLine: {'line': b'   47 |     double get_error(float* range_data, \x1b[01;35m\x1b[Kdouble dist\x1b[m\x1b[K)\n'}
+[2.746076] (wall_follow) StderrLine: {'line': b'      |                                         \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[2.746135] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid WallFollow::pid_control(double, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.746194] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:76:16:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kangle\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[2.746252] (wall_follow) StderrLine: {'line': b'   76 |         double \x1b[01;35m\x1b[Kangle\x1b[m\x1b[K = 0.0;\n'}
+[2.746310] (wall_follow) StderrLine: {'line': b'      |                \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.746367] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:64:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kerror\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.746424] (wall_follow) StderrLine: {'line': b'   64 |     void pid_control(\x1b[01;35m\x1b[Kdouble error\x1b[m\x1b[K, double velocity)\n'}
+[2.746482] (wall_follow) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[2.746538] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:64:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kvelocity\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.746596] (wall_follow) StderrLine: {'line': b'   64 |     void pid_control(double error, \x1b[01;35m\x1b[Kdouble velocity\x1b[m\x1b[K)\n'}
+[2.746653] (wall_follow) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[2.747308] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.747437] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:93:16:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kerror\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[2.747552] (wall_follow) StderrLine: {'line': b'   93 |         double \x1b[01;35m\x1b[Kerror\x1b[m\x1b[K = 0.0; // TODO: replace with error calculated by get_error()\n'}
+[2.747640] (wall_follow) StderrLine: {'line': b'      |                \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[2.747704] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:94:16:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kvelocity\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[2.747767] (wall_follow) StderrLine: {'line': b'   94 |         double \x1b[01;35m\x1b[Kvelocity\x1b[m\x1b[K = 0.0; // TODO: calculate desired car velocity based on error\n'}
+[2.747828] (wall_follow) StderrLine: {'line': b'      |                \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.747888] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/wall_follow/src/wall_follow_node.cpp:82:74:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kscan_msg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.747955] (wall_follow) StderrLine: {'line': b'   82 |     void scan_callback(\x1b[01;35m\x1b[Kconst sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg\x1b[m\x1b[K)\n'}
+[2.748016] (wall_follow) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[2.770221] (safety_node) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/safety_node/src/safety_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid Safety::drive_callback(nav_msgs::msg::Odometry_<std::allocator<void> >::ConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.770386] (safety_node) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/safety_node/src/safety_node.cpp:33:71:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kmsg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.770458] (safety_node) StderrLine: {'line': b'   33 |     void drive_callback(\x1b[01;35m\x1b[Kconst nav_msgs::msg::Odometry::ConstSharedPtr msg\x1b[m\x1b[K)\n'}
+[2.770524] (safety_node) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[2.772122] (safety_node) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/safety_node/src/safety_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid Safety::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.772236] (safety_node) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/safety_node/src/safety_node.cpp:38:74:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kscan_msg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.772306] (safety_node) StderrLine: {'line': b'   38 |     void scan_callback(\x1b[01;35m\x1b[Kconst sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg\x1b[m\x1b[K)\n'}
+[2.772389] (safety_node) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[2.804542] (-) TimerEvent: {}
+[2.904825] (-) TimerEvent: {}
+[3.005077] (-) TimerEvent: {}
+[3.105338] (-) TimerEvent: {}
+[3.122231] (gap_follow) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable reactive_node\x1b[0m\n'}
+[3.141260] (pure_pursuit) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:32:81:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kgeometry_msgs::msg::PoseStamped_<std::allocator<void> >::ConstPtr\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K-Wdeprecated-declarations\x1b[m\x1b[K]\n'}
+[3.141456] (pure_pursuit) StderrLine: {'line': b'   32 |     void pose_callback(const geometry_msgs::msg::PoseStamped::ConstPtr &pose_msg\x1b[01;35m\x1b[K)\x1b[m\x1b[K\n'}
+[3.141529] (pure_pursuit) StderrLine: {'line': b'      |                                                                                 \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[3.141591] (pure_pursuit) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/geometry_msgs/msg/pose_stamped.hpp:7\x1b[m\x1b[K,\n'}
+[3.141654] (pure_pursuit) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:10\x1b[m\x1b[K:\n'}
+[3.141764] (pure_pursuit) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/geometry_msgs/msg/detail/pose_stamped__struct.hpp:114:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[3.141833] (pure_pursuit) StderrLine: {'line': b'  114 |     \x1b[01;36m\x1b[KConstPtr\x1b[m\x1b[K;\n'}
+[3.141894] (pure_pursuit) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.141953] (pure_pursuit) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid PurePursuit::pose_callback(const ConstPtr&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.142013] (pure_pursuit) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:32:73:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpose_msg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.142079] (pure_pursuit) StderrLine: {'line': b'   32 |     void pose_callback(\x1b[01;35m\x1b[Kconst geometry_msgs::msg::PoseStamped::ConstPtr &pose_msg\x1b[m\x1b[K)\n'}
+[3.142139] (pure_pursuit) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[3.146261] (wall_follow) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable wall_follow_node\x1b[0m\n'}
+[3.169825] (pure_pursuit_sim) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/pure_pursuit_sim/src/pure_pursuit_node.cpp:32:81:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kgeometry_msgs::msg::PoseStamped_<std::allocator<void> >::ConstPtr\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K-Wdeprecated-declarations\x1b[m\x1b[K]\n'}
+[3.170034] (pure_pursuit_sim) StderrLine: {'line': b'   32 |     void pose_callback(const geometry_msgs::msg::PoseStamped::ConstPtr &pose_msg\x1b[01;35m\x1b[K)\x1b[m\x1b[K\n'}
+[3.170122] (pure_pursuit_sim) StderrLine: {'line': b'      |                                                                                 \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[3.170187] (pure_pursuit_sim) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/geometry_msgs/msg/pose_stamped.hpp:7\x1b[m\x1b[K,\n'}
+[3.170261] (pure_pursuit_sim) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/sim_ws/src/pure_pursuit_sim/src/pure_pursuit_node.cpp:10\x1b[m\x1b[K:\n'}
+[3.170330] (pure_pursuit_sim) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/geometry_msgs/msg/detail/pose_stamped__struct.hpp:114:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[3.170512] (pure_pursuit_sim) StderrLine: {'line': b'  114 |     \x1b[01;36m\x1b[KConstPtr\x1b[m\x1b[K;\n'}
+[3.170605] (pure_pursuit_sim) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.170670] (pure_pursuit_sim) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/pure_pursuit_sim/src/pure_pursuit_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid PurePursuit::pose_callback(const ConstPtr&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.170737] (pure_pursuit_sim) StderrLine: {'line': b'\x1b[01m\x1b[K/sim_ws/src/pure_pursuit_sim/src/pure_pursuit_node.cpp:32:73:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpose_msg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.170799] (pure_pursuit_sim) StderrLine: {'line': b'   32 |     void pose_callback(\x1b[01;35m\x1b[Kconst geometry_msgs::msg::PoseStamped::ConstPtr &pose_msg\x1b[m\x1b[K)\n'}
+[3.170859] (pure_pursuit_sim) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[3.173081] (safety_node) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable safety_node\x1b[0m\n'}
+[3.205462] (-) TimerEvent: {}
+[3.231517] (gap_follow) StdoutLine: {'line': b'[100%] Built target reactive_node\n'}
+[3.241894] (gap_follow) CommandEnded: {'returncode': 0}
+[3.257887] (wall_follow) StdoutLine: {'line': b'[100%] Built target wall_follow_node\n'}
+[3.260220] (gap_follow) JobProgress: {'identifier': 'gap_follow', 'progress': 'install'}
+[3.271270] (gap_follow) Command: {'cmd': ['/usr/bin/cmake', '--install', '/sim_ws/src/build/gap_follow'], 'cwd': '/sim_ws/src/build/gap_follow', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/gap_follow'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[3.274062] (wall_follow) CommandEnded: {'returncode': 0}
+[3.278531] (gap_follow) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.278795] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/lib/gap_follow/reactive_node\n'}
+[3.278950] (gap_follow) StdoutLine: {'line': b'-- Set runtime path of "/sim_ws/src/install/gap_follow/lib/gap_follow/reactive_node" to ""\n'}
+[3.279118] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/environment/pythonpath.sh\n'}
+[3.279204] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/environment/pythonpath.dsv\n'}
+[3.279304] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/lib/python3.8/site-packages/gap_follow\n'}
+[3.279401] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/lib/python3.8/site-packages/gap_follow/__init__.py\n'}
+[3.283595] (safety_node) StdoutLine: {'line': b'[100%] Built target safety_node\n'}
+[3.290817] (wall_follow) JobProgress: {'identifier': 'wall_follow', 'progress': 'install'}
+[3.291194] (wall_follow) Command: {'cmd': ['/usr/bin/cmake', '--install', '/sim_ws/src/build/wall_follow'], 'cwd': '/sim_ws/src/build/wall_follow', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/wall_follow'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[3.294633] (safety_node) CommandEnded: {'returncode': 0}
+[3.299708] (wall_follow) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.299949] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/lib/wall_follow/wall_follow_node\n'}
+[3.300104] (wall_follow) StdoutLine: {'line': b'-- Set runtime path of "/sim_ws/src/install/wall_follow/lib/wall_follow/wall_follow_node" to ""\n'}
+[3.300205] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/environment/pythonpath.sh\n'}
+[3.300316] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/environment/pythonpath.dsv\n'}
+[3.300446] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/lib/python3.8/site-packages/wall_follow\n'}
+[3.300570] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/lib/python3.8/site-packages/wall_follow/__init__.py\n'}
+[3.305066] (gap_follow) StdoutLine: {'line': b"Listing '/sim_ws/src/install/gap_follow/lib/python3.8/site-packages/gap_follow'...\n"}
+[3.305227] (gap_follow) StdoutLine: {'line': b"Compiling '/sim_ws/src/install/gap_follow/lib/python3.8/site-packages/gap_follow/__init__.py'...\n"}
+[3.305528] (-) TimerEvent: {}
+[3.308768] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/lib/gap_follow/reactive_node.py\n'}
+[3.308958] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/ament_index/resource_index/package_run_dependencies/gap_follow\n'}
+[3.309158] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/ament_index/resource_index/parent_prefix_path/gap_follow\n'}
+[3.309264] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/environment/ament_prefix_path.sh\n'}
+[3.309361] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/environment/ament_prefix_path.dsv\n'}
+[3.309470] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/environment/path.sh\n'}
+[3.309639] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/environment/path.dsv\n'}
+[3.309734] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/local_setup.bash\n'}
+[3.309852] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/local_setup.sh\n'}
+[3.310015] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/local_setup.zsh\n'}
+[3.310108] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/local_setup.dsv\n'}
+[3.310184] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/package.dsv\n'}
+[3.310309] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/ament_index/resource_index/packages/gap_follow\n'}
+[3.310477] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/cmake/gap_followConfig.cmake\n'}
+[3.310659] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/cmake/gap_followConfig-version.cmake\n'}
+[3.310722] (gap_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/gap_follow/share/gap_follow/package.xml\n'}
+[3.312209] (safety_node) JobProgress: {'identifier': 'safety_node', 'progress': 'install'}
+[3.312616] (safety_node) Command: {'cmd': ['/usr/bin/cmake', '--install', '/sim_ws/src/build/safety_node'], 'cwd': '/sim_ws/src/build/safety_node', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/safety_node'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[3.315417] (gap_follow) CommandEnded: {'returncode': 0}
+[3.321818] (safety_node) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.322034] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/lib/safety_node/safety_node\n'}
+[3.322149] (safety_node) StdoutLine: {'line': b'-- Set runtime path of "/sim_ws/src/install/safety_node/lib/safety_node/safety_node" to ""\n'}
+[3.322218] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/environment/pythonpath.sh\n'}
+[3.322284] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/environment/pythonpath.dsv\n'}
+[3.322349] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/lib/python3.8/site-packages/safety_node\n'}
+[3.322413] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/lib/python3.8/site-packages/safety_node/__init__.py\n'}
+[3.326602] (wall_follow) StdoutLine: {'line': b"Listing '/sim_ws/src/install/wall_follow/lib/python3.8/site-packages/wall_follow'...\n"}
+[3.326761] (wall_follow) StdoutLine: {'line': b"Compiling '/sim_ws/src/install/wall_follow/lib/python3.8/site-packages/wall_follow/__init__.py'...\n"}
+[3.330108] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/lib/wall_follow/wall_follow_node.py\n'}
+[3.330352] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/ament_index/resource_index/package_run_dependencies/wall_follow\n'}
+[3.330463] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/ament_index/resource_index/parent_prefix_path/wall_follow\n'}
+[3.330554] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/environment/ament_prefix_path.sh\n'}
+[3.330660] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/environment/ament_prefix_path.dsv\n'}
+[3.330747] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/environment/path.sh\n'}
+[3.330836] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/environment/path.dsv\n'}
+[3.330919] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/local_setup.bash\n'}
+[3.331014] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/local_setup.sh\n'}
+[3.331110] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/local_setup.zsh\n'}
+[3.331207] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/local_setup.dsv\n'}
+[3.331304] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/package.dsv\n'}
+[3.331398] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/ament_index/resource_index/packages/wall_follow\n'}
+[3.331514] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/cmake/wall_followConfig.cmake\n'}
+[3.331630] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/cmake/wall_followConfig-version.cmake\n'}
+[3.331723] (wall_follow) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/wall_follow/share/wall_follow/package.xml\n'}
+[3.333652] (wall_follow) CommandEnded: {'returncode': 0}
+[3.347358] (safety_node) StdoutLine: {'line': b"Listing '/sim_ws/src/install/safety_node/lib/python3.8/site-packages/safety_node'...\n"}
+[3.347862] (safety_node) StdoutLine: {'line': b"Compiling '/sim_ws/src/install/safety_node/lib/python3.8/site-packages/safety_node/__init__.py'...\n"}
+[3.351110] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/lib/safety_node/safety_node.py\n'}
+[3.351698] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/ament_index/resource_index/package_run_dependencies/safety_node\n'}
+[3.351884] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/ament_index/resource_index/parent_prefix_path/safety_node\n'}
+[3.352054] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/environment/ament_prefix_path.sh\n'}
+[3.352153] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/environment/ament_prefix_path.dsv\n'}
+[3.352274] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/environment/path.sh\n'}
+[3.352388] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/environment/path.dsv\n'}
+[3.352559] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/local_setup.bash\n'}
+[3.352705] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/local_setup.sh\n'}
+[3.352848] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/local_setup.zsh\n'}
+[3.352975] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/local_setup.dsv\n'}
+[3.353210] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/package.dsv\n'}
+[3.353368] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/ament_index/resource_index/packages/safety_node\n'}
+[3.353491] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/cmake/safety_nodeConfig.cmake\n'}
+[3.353609] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/cmake/safety_nodeConfig-version.cmake\n'}
+[3.353743] (safety_node) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/safety_node/share/safety_node/package.xml\n'}
+[3.362491] (gap_follow) JobEnded: {'identifier': 'gap_follow', 'rc': 0}
+[3.363731] (safety_node) CommandEnded: {'returncode': 0}
+[3.379893] (wall_follow) JobEnded: {'identifier': 'wall_follow', 'rc': 0}
+[3.393768] (safety_node) JobEnded: {'identifier': 'safety_node', 'rc': 0}
+[3.405652] (-) TimerEvent: {}
+[3.505932] (-) TimerEvent: {}
+[3.577692] (pure_pursuit) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable pure_pursuit_node\x1b[0m\n'}
+[3.578419] (pure_pursuit_sim) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable pure_pursuit_node\x1b[0m\n'}
+[3.606065] (-) TimerEvent: {}
+[3.677755] (pure_pursuit) StdoutLine: {'line': b'[100%] Built target pure_pursuit_node\n'}
+[3.678044] (pure_pursuit_sim) StdoutLine: {'line': b'[100%] Built target pure_pursuit_node\n'}
+[3.685906] (pure_pursuit_sim) CommandEnded: {'returncode': 0}
+[3.688098] (pure_pursuit) CommandEnded: {'returncode': 0}
+[3.701972] (pure_pursuit_sim) JobProgress: {'identifier': 'pure_pursuit_sim', 'progress': 'install'}
+[3.702340] (pure_pursuit_sim) Command: {'cmd': ['/usr/bin/cmake', '--install', '/sim_ws/src/build/pure_pursuit_sim'], 'cwd': '/sim_ws/src/build/pure_pursuit_sim', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/pure_pursuit_sim'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[3.705069] (pure_pursuit) JobProgress: {'identifier': 'pure_pursuit', 'progress': 'install'}
+[3.705309] (pure_pursuit) Command: {'cmd': ['/usr/bin/cmake', '--install', '/sim_ws/src/build/pure_pursuit'], 'cwd': '/sim_ws/src/build/pure_pursuit', 'env': OrderedDict([('TMUX', '/tmp//tmux-0/default,511,0'), ('HOSTNAME', 'e5f20eb0e3b3'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/sim_ws'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'graphics'), ('TERM', 'screen'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('XAUTHORITY', '/tmp/.docker1lk3ryn6.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('PWD', '/sim_ws/src/build/pure_pursuit'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[3.706595] (-) TimerEvent: {}
+[3.709973] (pure_pursuit_sim) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.710205] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/lib/pure_pursuit_sim/pure_pursuit_node\n'}
+[3.710445] (pure_pursuit_sim) StdoutLine: {'line': b'-- Set runtime path of "/sim_ws/src/install/pure_pursuit_sim/lib/pure_pursuit_sim/pure_pursuit_node" to ""\n'}
+[3.710531] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/pythonpath.sh\n'}
+[3.710630] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/pythonpath.dsv\n'}
+[3.710736] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/lib/python3.8/site-packages/pure_pursuit_sim\n'}
+[3.710815] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/lib/python3.8/site-packages/pure_pursuit_sim/__init__.py\n'}
+[3.712003] (pure_pursuit) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.712127] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/lib/pure_pursuit/pure_pursuit_node\n'}
+[3.712473] (pure_pursuit) StdoutLine: {'line': b'-- Set runtime path of "/sim_ws/src/install/pure_pursuit/lib/pure_pursuit/pure_pursuit_node" to ""\n'}
+[3.712658] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/environment/pythonpath.sh\n'}
+[3.712835] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/environment/pythonpath.dsv\n'}
+[3.712915] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit\n'}
+[3.712991] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit/__init__.py\n'}
+[3.734477] (pure_pursuit_sim) StdoutLine: {'line': b"Listing '/sim_ws/src/install/pure_pursuit_sim/lib/python3.8/site-packages/pure_pursuit_sim'...\n"}
+[3.734611] (pure_pursuit_sim) StdoutLine: {'line': b"Compiling '/sim_ws/src/install/pure_pursuit_sim/lib/python3.8/site-packages/pure_pursuit_sim/__init__.py'...\n"}
+[3.736120] (pure_pursuit) StdoutLine: {'line': b"Listing '/sim_ws/src/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit'...\n"}
+[3.736226] (pure_pursuit) StdoutLine: {'line': b"Compiling '/sim_ws/src/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit/__init__.py'...\n"}
+[3.737432] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/lib/pure_pursuit_sim/pure_pursuit_node.py\n'}
+[3.737595] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/lib/pure_pursuit_sim/waypoint_logger.py\n'}
+[3.737681] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/ament_index/resource_index/package_run_dependencies/pure_pursuit_sim\n'}
+[3.737805] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/ament_index/resource_index/parent_prefix_path/pure_pursuit_sim\n'}
+[3.737971] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/ament_prefix_path.sh\n'}
+[3.738065] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/ament_prefix_path.dsv\n'}
+[3.738227] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/path.sh\n'}
+[3.738318] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/environment/path.dsv\n'}
+[3.738399] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/local_setup.bash\n'}
+[3.738461] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/local_setup.sh\n'}
+[3.738532] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/local_setup.zsh\n'}
+[3.738604] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/local_setup.dsv\n'}
+[3.738662] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/package.dsv\n'}
+[3.738736] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/ament_index/resource_index/packages/pure_pursuit_sim\n'}
+[3.738809] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/cmake/pure_pursuit_simConfig.cmake\n'}
+[3.738903] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/cmake/pure_pursuit_simConfig-version.cmake\n'}
+[3.738974] (pure_pursuit_sim) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit_sim/share/pure_pursuit_sim/package.xml\n'}
+[3.739059] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/lib/pure_pursuit/pure_pursuit_node.py\n'}
+[3.739204] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/ament_index/resource_index/package_run_dependencies/pure_pursuit\n'}
+[3.739329] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/ament_index/resource_index/parent_prefix_path/pure_pursuit\n'}
+[3.739431] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/environment/ament_prefix_path.sh\n'}
+[3.739528] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/environment/ament_prefix_path.dsv\n'}
+[3.739638] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/environment/path.sh\n'}
+[3.739734] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/environment/path.dsv\n'}
+[3.739825] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/local_setup.bash\n'}
+[3.740015] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/local_setup.sh\n'}
+[3.740299] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/local_setup.zsh\n'}
+[3.740674] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/local_setup.dsv\n'}
+[3.741824] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/package.dsv\n'}
+[3.742115] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/ament_index/resource_index/packages/pure_pursuit\n'}
+[3.742224] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/cmake/pure_pursuitConfig.cmake\n'}
+[3.742325] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/cmake/pure_pursuitConfig-version.cmake\n'}
+[3.742408] (pure_pursuit_sim) CommandEnded: {'returncode': 0}
+[3.742614] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /sim_ws/src/install/pure_pursuit/share/pure_pursuit/package.xml\n'}
+[3.750409] (pure_pursuit) CommandEnded: {'returncode': 0}
+[3.770773] (pure_pursuit_sim) JobEnded: {'identifier': 'pure_pursuit_sim', 'rc': 0}
+[3.778537] (pure_pursuit) JobEnded: {'identifier': 'pure_pursuit', 'rc': 0}
+[3.779301] (-) EventReactorShutdown: {}

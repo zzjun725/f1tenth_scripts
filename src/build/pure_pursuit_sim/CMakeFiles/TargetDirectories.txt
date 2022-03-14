@@ -1,0 +1,10 @@
+/sim_ws/src/build/pure_pursuit_sim/CMakeFiles/install/strip.dir
+/sim_ws/src/build/pure_pursuit_sim/CMakeFiles/install/local.dir
+/sim_ws/src/build/pure_pursuit_sim/CMakeFiles/install.dir
+/sim_ws/src/build/pure_pursuit_sim/CMakeFiles/list_install_components.dir
+/sim_ws/src/build/pure_pursuit_sim/CMakeFiles/rebuild_cache.dir
+/sim_ws/src/build/pure_pursuit_sim/CMakeFiles/edit_cache.dir
+/sim_ws/src/build/pure_pursuit_sim/CMakeFiles/test.dir
+/sim_ws/src/build/pure_pursuit_sim/CMakeFiles/pure_pursuit_node.dir
+/sim_ws/src/build/pure_pursuit_sim/CMakeFiles/pure_pursuit_sim_uninstall.dir
+/sim_ws/src/build/pure_pursuit_sim/CMakeFiles/uninstall.dir
