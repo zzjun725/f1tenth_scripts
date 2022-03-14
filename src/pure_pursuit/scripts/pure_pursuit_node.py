@@ -45,7 +45,7 @@ class PurePursuit(Node):
     def __init__(self):
         super().__init__('pure_pursuit_node')
         self.waypoints_markerpub = self.create_publisher(Marker, '/wp_marker', 10)
-        self.drawWayPoints()
+        # self.drawWayPoints()
         self.findFirstP = False
         self.nearst_idx = 0
         self.wp = None
@@ -97,6 +97,33 @@ class PurePursuit(Node):
 
     
     def pose_callback(self, pose_msg):
+        scale_vector = Vector3()
+        scale_vector.x = 0.1
+        scale_vector.y = 0.1
+        scale_vector.z = 0.1
+        marker = Marker(
+                    type=Marker.LINE_STRIP,
+                    id=0,
+                    # action = Marker.ADD, 
+                    pose=Pose(),
+                    scale=scale_vector,
+                    header=Header(frame_id='map'),
+                    # color=ColorRGBA(0.0, 1.0, 0.0, 1.0),                    
+                    )
+        for i, point in enumerate(wp):
+            x, y = point[0], point[1]
+            x, y = float(x), float(y)
+            # print(x, y)
+            point = Point()
+            point.x = x
+            point.y = y
+            point.z = 0.0
+            marker.points.append(point)
+        marker.color.r = 1.0
+        marker.color.g = 0.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0  
+        self.waypoints_markerpub.publish(marker)           
         # TODO: find the current waypoint to track using methods mentioned in lecture
         near_dist = 100
         cur_position = np.array([pose_msg.pose.pose.position.x, pose_msg.pose.pose.position.y])
