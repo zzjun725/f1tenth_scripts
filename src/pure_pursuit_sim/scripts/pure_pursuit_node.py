@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from inspect import ismethoddescriptor
 import rclpy
 from rclpy.node import Node
 from visualization_msgs.msg import Marker
@@ -18,6 +17,7 @@ from builtin_interfaces.msg import Duration
 import ipdb
 
 home = '/sim_ws'
+os.makedirs(home+'/wp_log', exist_ok = True)
 log_position = home+'/wp_log'
 for file in os.listdir(log_position):
     if file.startswith('wp'):
@@ -37,6 +37,28 @@ wp = np.array(waypoints)
 print(len(wp))
 
 
+# interpolate
+#      ^ x
+#   y  |
+# <-----
+# left_up = np.array([9.56, 8.571])  # (x2, y2)
+# right_down = np.array([-13.57, 0.28])  # (x1, y1)
+# y1, y2 = right_down[1], left_up[1]  # y1 < y2
+# x1, x2 = right_down[0], left_up[0]  # x1 < x2
+# vertical = np.linspace(x1, x2, 500)
+# horizon = np.linspace(y1, y2, 250)
+# waypoints = []
+# for v in vertical:
+#     waypoints.append(np.array([v, y1]))
+# for h in horizon:
+#     waypoints.append(np.array([x2, h]))
+# for v in vertical[::-1]:
+#     waypoints.append(np.array([v, y2]))
+# for h in horizon[::-1]:
+#     waypoints.append(np.array([x1, h]))
+# wp = np.array(waypoints)
+# print(len(wp))
+
 class PurePursuit(Node):
     """ 
     Implement Pure Pursuit on the car
@@ -49,7 +71,7 @@ class PurePursuit(Node):
         self.findFirstP = False
         self.nearst_idx = 0
         self.wp = None
-        self.L = 0.3
+        self.L = 0.6
         self.P = 0.3
         self.odom_subscriber = self.create_subscription(
             Odometry, 'ego_racecar/odom', self.pose_callback, 10)
@@ -66,7 +88,7 @@ class PurePursuit(Node):
         scale_vector.z = 0.1
         lifetime = Duration(sec=100)
         marker = Marker(
-                    type=Marker.LINE_STRIP,
+                    type=Marker.SPHERE,
                     id=m_id,
                     action = Marker.ADD, 
                     lifetime=lifetime,
@@ -157,7 +179,7 @@ class PurePursuit(Node):
         else:
             steering_angle = self.P * -gamma
         # TODO: publish drive message, don't forget to limit the steering angle.
-        velocity = 1.0
+        velocity = 2.0
         if abs(steering_angle) >=1:
             steering_angle /= 4
         
