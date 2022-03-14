@@ -55,10 +55,7 @@ print(len(wp))
 # for v in vertical[::-1]:
 #     waypoints.append(np.array([v, y2]))
 # for h in horizon[::-1]:
-#     waypoints.append(np.array([x1, h]))
-# wp = np.array(waypoints)
-# print(len(wp))
-
+#     waypoints.points
 class PurePursuit(Node):
     """ 
     Implement Pure Pursuit on the car
@@ -81,44 +78,95 @@ class PurePursuit(Node):
         self.drive_publisher = self.create_publisher(AckermannDriveStamped, drive_topic, 10)
         self.drive_publisher.publish(self.ackermann_ord)
 
-    def _pubMarker(self, x, y, m_id):
+    def _pubMarker(self, marker):
+        # scale_vector = Vector3()
+        # scale_vector.x = 0.1
+        # scale_vector.y = 0.1
+        # scale_vector.z = 0.1
+        # lifetime = Duration(sec=100)
+        # marker = Marker(
+        #             type=Marker.SPHERE,
+        #             id=m_id,
+        #             action = Marker.ADD, 
+        #             lifetime=lifetime,
+        #             pose=Pose(),
+        #             scale=scale_vector,
+        #             header=Header(frame_id='map'),
+        #             # color=ColorRGBA(0.0, 1.0, 0.0, 1.0),                    
+        #             )
+        # marker.pose.position.x = x
+        # marker.pose.position.y = y
+        # marker.pose.position.z = 0.0
+        # marker.pose.orientation.w = 1.0
+        # marker.pose.orientation.x = 0.0
+        # marker.pose.orientation.y = 0.0
+        # marker.pose.orientation.z = 0.0                
+        # marker.color.r = 1.0
+        # marker.color.g = 0.0
+        # marker.color.b = 0.0
+        # marker.color.a = 0.9        
+        self.waypoints_markerpub.publish(marker)        
+    
+    def drawWayPoints(self):
         scale_vector = Vector3()
         scale_vector.x = 0.1
         scale_vector.y = 0.1
         scale_vector.z = 0.1
-        lifetime = Duration(sec=100)
         marker = Marker(
-                    type=Marker.SPHERE,
-                    id=m_id,
-                    action = Marker.ADD, 
-                    lifetime=lifetime,
+                    type=Marker.LINE_STRIP,
+                    id=0,
+                    # action = Marker.ADD, 
                     pose=Pose(),
                     scale=scale_vector,
                     header=Header(frame_id='map'),
                     # color=ColorRGBA(0.0, 1.0, 0.0, 1.0),                    
                     )
-        marker.pose.position.x = x
-        marker.pose.position.y = y
-        marker.pose.position.z = 0.0
-        marker.pose.orientation.w = 1.0
-        marker.pose.orientation.x = 0.0
-        marker.pose.orientation.y = 0.0
-        marker.pose.orientation.z = 0.0                
-        marker.color.r = 1.0
-        marker.color.g = 0.0
-        marker.color.b = 0.0
-        marker.color.a = 0.9        
-        self.waypoints_markerpub.publish(marker)        
-    
-    def drawWayPoints(self):
         for i, point in enumerate(wp):
             x, y = point[0], point[1]
             x, y = float(x), float(y)
             # print(x, y)
-            self._pubMarker(x, y, i)
+            point = Point()
+            point.x = x
+            point.y = y
+            point.z = 0.0
+            marker.points.append(point)
+        marker.color.r = 1.0
+        marker.color.g = 0.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0  
+        self.waypoints_markerpub.publish(marker)
 
     
     def pose_callback(self, pose_msg):
+        scale_vector = Vector3()
+        scale_vector.x = 0.1
+        scale_vector.y = 0.1
+        scale_vector.z = 0.1
+        marker = Marker(
+                    type=Marker.LINE_STRIP,
+                    id=0,
+                    # action = Marker.ADD, 
+                    pose=Pose(),
+                    scale=scale_vector,
+                    header=Header(frame_id='map'),
+                    # color=ColorRGBA(0.0, 1.0, 0.0, 1.0),                    
+                    )
+        for i, point in enumerate(wp):
+            x, y = point[0], point[1]
+            x, y = float(x), float(y)
+            # print(x, y)
+            point = Point()
+            point.x = x
+            point.y = y
+            point.z = 0.0
+            marker.points.append(point)
+        marker.color.r = 1.0
+        marker.color.g = 0.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0  
+        self.waypoints_markerpub.publish(marker)        
+        
+        
         # TODO: find the current waypoint to track using methods mentioned in lecture
         near_dist = 100
         cur_position = np.array([pose_msg.pose.pose.position.x, pose_msg.pose.pose.position.y])
