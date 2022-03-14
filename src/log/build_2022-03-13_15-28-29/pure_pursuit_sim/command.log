@@ -1,4 +1,0 @@
-Invoking command in '/sim_ws/src/build/pure_pursuit_sim': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /sim_ws/src/build/pure_pursuit_sim -- -j12 -l12
-Invoked command in '/sim_ws/src/build/pure_pursuit_sim' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /sim_ws/src/build/pure_pursuit_sim -- -j12 -l12
-Invoking command in '/sim_ws/src/build/pure_pursuit_sim': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /sim_ws/src/build/pure_pursuit_sim
-Invoked command in '/sim_ws/src/build/pure_pursuit_sim' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /sim_ws/src/build/pure_pursuit_sim
