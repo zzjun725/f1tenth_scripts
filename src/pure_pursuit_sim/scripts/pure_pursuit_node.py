@@ -27,7 +27,7 @@ for file in os.listdir(log_position):
 waypoints = []
 for i, row in enumerate(wp_log):
     # print(row)
-    if (i % 3 != 0):
+    if (i % 80 != 0):
         continue
     if len(row) > 2:
         x, y = row[0], row[1]
@@ -64,7 +64,6 @@ class PurePursuit(Node):
     def __init__(self):
         super().__init__('pure_pursuit_node')
         self.waypoints_markerpub = self.create_publisher(Marker, '/wp_marker', 10)
-        self.drawWayPoints()
         self.findFirstP = False
         self.nearst_idx = 0
         self.wp = None
@@ -76,74 +75,15 @@ class PurePursuit(Node):
         self.ackermann_ord = AckermannDriveStamped()
         self.ackermann_ord.drive.acceleration = 0.        
         self.drive_publisher = self.create_publisher(AckermannDriveStamped, drive_topic, 10)
-        self.drive_publisher.publish(self.ackermann_ord)
+        self.drive_publisher.publish(self.ackermann_ord)  
 
-    def _pubMarker(self, marker):
-        # scale_vector = Vector3()
-        # scale_vector.x = 0.1
-        # scale_vector.y = 0.1
-        # scale_vector.z = 0.1
-        # lifetime = Duration(sec=100)
-        # marker = Marker(
-        #             type=Marker.SPHERE,
-        #             id=m_id,
-        #             action = Marker.ADD, 
-        #             lifetime=lifetime,
-        #             pose=Pose(),
-        #             scale=scale_vector,
-        #             header=Header(frame_id='map'),
-        #             # color=ColorRGBA(0.0, 1.0, 0.0, 1.0),                    
-        #             )
-        # marker.pose.position.x = x
-        # marker.pose.position.y = y
-        # marker.pose.position.z = 0.0
-        # marker.pose.orientation.w = 1.0
-        # marker.pose.orientation.x = 0.0
-        # marker.pose.orientation.y = 0.0
-        # marker.pose.orientation.z = 0.0                
-        # marker.color.r = 1.0
-        # marker.color.g = 0.0
-        # marker.color.b = 0.0
-        # marker.color.a = 0.9        
-        self.waypoints_markerpub.publish(marker)        
-    
-    def drawWayPoints(self):
-        scale_vector = Vector3()
-        scale_vector.x = 0.1
-        scale_vector.y = 0.1
-        scale_vector.z = 0.1
-        marker = Marker(
-                    type=Marker.LINE_STRIP,
-                    id=0,
-                    # action = Marker.ADD, 
-                    pose=Pose(),
-                    scale=scale_vector,
-                    header=Header(frame_id='map'),
-                    # color=ColorRGBA(0.0, 1.0, 0.0, 1.0),                    
-                    )
-        for i, point in enumerate(wp):
-            x, y = point[0], point[1]
-            x, y = float(x), float(y)
-            # print(x, y)
-            point = Point()
-            point.x = x
-            point.y = y
-            point.z = 0.0
-            marker.points.append(point)
-        marker.color.r = 1.0
-        marker.color.g = 0.0
-        marker.color.b = 0.0
-        marker.color.a = 1.0  
-        self.waypoints_markerpub.publish(marker)
-
-    
     def pose_callback(self, pose_msg):
         scale_vector = Vector3()
         scale_vector.x = 0.1
         scale_vector.y = 0.1
         scale_vector.z = 0.1
         marker = Marker(
-                    type=Marker.LINE_STRIP,
+                    type=Marker.POINTS,
                     id=0,
                     # action = Marker.ADD, 
                     pose=Pose(),
@@ -199,11 +139,17 @@ class PurePursuit(Node):
         error = 0.01
         x_array = np.linspace(wp[segment_end-1][0], wp[segment_end][0], 10)
         y_array = np.linspace(wp[segment_end-1][1], wp[segment_end][1], 10)
-        # ipdb.set_trace()
+        ipdb.set_trace()
+        
+        interp_point = np.array([x_array[-1], y_array[-1]])
+        print(interp_point)
         for x, y in zip(x_array, y_array):
             interp_point = np.array([x, y])
             if abs(self.L - np.linalg.norm(cur_position-interp_point)) < error:
-                break
+                print('changed')
+                interp_point = np.array([x, y])
+        
+        print(interp_point)
         cur_L = np.linalg.norm(cur_position-interp_point)
         # TODO: transform goal point to vehicle frame of reference
         quaternion = np.array([pose_msg.pose.pose.orientation.w, 
@@ -218,8 +164,33 @@ class PurePursuit(Node):
                                  [0, 0, 1, 0],
                                  [0, 0, 0, 1]])
         
+        
+        
+        scale_vector = Vector3()
+        scale_vector.x = 0.5
+        scale_vector.y = 0.5
+        scale_vector.z = 0.5
+        marker = Marker(
+            type=Marker.SPHERE,
+            id=1,
+            # action = Marker.ADD, 
+            pose=Pose(),
+            scale=scale_vector,
+            header=Header(frame_id='map'),
+            # color=ColorRGBA(0.0, 1.0, 0.0, 1.0),                    
+            )
+        marker.pose.position.x = interp_point[0]
+        marker.pose.position.y = interp_point[1]
+        marker.pose.position.z = 0.0
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0  
+        self.waypoints_markerpub.publish(marker)          
+        
+        
         local_goalP = np.linalg.inv(local2global) @ np.array([interp_point[0], interp_point[1], 0, 1])
-        # ipdb.set_trace()
+        
         gamma = 2*abs(local_goalP[1]) / (cur_L ** 2)
         # TODO: calculate curvature/steering angle
         if local_goalP[1] > 0:

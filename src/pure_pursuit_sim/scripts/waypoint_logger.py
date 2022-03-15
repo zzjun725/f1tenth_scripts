@@ -9,9 +9,10 @@ from nav_msgs.msg import Odometry
 # TODO CHECK: include needed ROS msg type headers and libraries
 # from tf_transformations import euler_from_quaternion
 import transforms3d
+import os
 
 home = '/sim_ws'
-
+os.makedirs(home+'/wp_log', exist_ok = True)
 
 class WaypointsLogger(Node):
     """ 

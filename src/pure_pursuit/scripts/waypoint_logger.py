@@ -7,6 +7,8 @@ from sensor_msgs.msg import LaserScan
 from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
 # TODO CHECK: include needed ROS msg type headers and libraries
 from tf.transformations import euler_from_quaternion
+from nav_msgs.msg import Odometry
+
 
 home = '/f1tenth_ws'
 
