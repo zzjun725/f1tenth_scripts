@@ -25,14 +25,17 @@ for file in os.listdir(log_position):
         # import ipdb; ipdb.set_trace()
         print('load wp_log')
 waypoints = []
+last_x, last_y = 0, 0
 for i, row in enumerate(wp_log):
     # print(row)
-    if (i % 80 != 0):
+    if (i % 40 != 0):
         continue
     if len(row) > 2:
         x, y = row[0], row[1]
         x, y = float(x), float(y)
+        # if (abs(last_y-y) + abs(last_x-x)) > 0.5: 
         waypoints.append(np.array([x, y]))
+        # last_x, last_y = x, y
 wp = np.array(waypoints)
 print(len(wp))
 
@@ -139,17 +142,17 @@ class PurePursuit(Node):
         error = 0.01
         x_array = np.linspace(wp[segment_end-1][0], wp[segment_end][0], 10)
         y_array = np.linspace(wp[segment_end-1][1], wp[segment_end][1], 10)
-        ipdb.set_trace()
+        # ipdb.set_trace()
         
         interp_point = np.array([x_array[-1], y_array[-1]])
-        print(interp_point)
+        # print(interp_point)
         for x, y in zip(x_array, y_array):
             interp_point = np.array([x, y])
             if abs(self.L - np.linalg.norm(cur_position-interp_point)) < error:
-                print('changed')
+                # print('changed')
                 interp_point = np.array([x, y])
         
-        print(interp_point)
+        # print(interp_point)
         cur_L = np.linalg.norm(cur_position-interp_point)
         # TODO: transform goal point to vehicle frame of reference
         quaternion = np.array([pose_msg.pose.pose.orientation.w, 
@@ -190,7 +193,7 @@ class PurePursuit(Node):
         
         
         local_goalP = np.linalg.inv(local2global) @ np.array([interp_point[0], interp_point[1], 0, 1])
-        
+        print(local_goalP)
         gamma = 2*abs(local_goalP[1]) / (cur_L ** 2)
         # TODO: calculate curvature/steering angle
         if local_goalP[1] > 0:
@@ -198,7 +201,7 @@ class PurePursuit(Node):
         else:
             steering_angle = self.P * -gamma
         # TODO: publish drive message, don't forget to limit the steering angle.
-        velocity = 2.0
+        velocity = 1.0
         if abs(steering_angle) >=1:
             steering_angle /= 4
         
