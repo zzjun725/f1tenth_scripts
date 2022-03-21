@@ -122,12 +122,14 @@ class RRT(Node):
         super().__init__('RRT')
         pose_topic = "ego_racecar/odom"
         scan_topic = "/scan"
-        ogrid_topic = '/ogrid'
+        # ogrid_topic = '/ogrid'
         drive_topic = '/drive'
         self.L = 0.8
         self.P = 0.4
         self.nearst_idx = 0
         self.pathL = 5
+        self.cur_position = np.zeros((2, 1))
+        self.cur_yaw = 0
 
         # you could add your own parameters to the rrt_params.yaml file,
         # and get them here as class attributes as shown above.
@@ -147,8 +149,10 @@ class RRT(Node):
         
         # self.ogrid_pub = self.create_publisher(OccupancyGrid, ogrid_topic, 10)
         self.ogrid_markerpub = self.create_publisher(Marker, '/ogrid_marker', 10)
+        # self.timer = self.create_timer(0.5, self.drawOgrid_callback)
         self.localgoal_markerpub = self.create_publisher(Marker, '/localg_marker', 10)
         self.rrtgoal_markerpub = self.create_publisher(Marker, '/rrtg_marker', 10)
+        self.rrtpath_markerpub = self.create_publisher(Marker, '/rrtpath_marker', 10)
         self.ackermann_ord = AckermannDriveStamped()
         self.ackermann_ord.drive.acceleration = 0.        
         self.drive_publisher = self.create_publisher(AckermannDriveStamped, drive_topic, 10)
@@ -208,7 +212,9 @@ class RRT(Node):
         self.goal_flow = self.sample()
         self.goal_threshold = 0.1
         self.path = []
-        self.num_interp= 5        
+        self.num_interp= 5
+
+                
 
     def scan_processor(self, scan_msg, gap=5):
         """
@@ -234,7 +240,7 @@ class RRT(Node):
 
         """
         # calculate the distance from the wall
-        theta_dist = self.scan_processor(scan_msg, gap=5)
+        theta_dist = self.scan_processor(scan_msg, gap=4)
         self.Map_Processor.update_npMap(theta_dist)
     
     def local2grid(self, coord):
@@ -293,11 +299,9 @@ class RRT(Node):
         local_goalP = np.linalg.inv(local2global) @ np.array([interp_point[0], interp_point[1], 0, 1])
 
         rrt_goal = local_goalP[:2]
-        
-        # draw local goal Point
-        self.localgoalmarker.pose.position.x = interp_point[0]
-        self.localgoalmarker.pose.position.y = interp_point[1]
-        self.ogrid_markerpub.publish(self.localgoalmarker) 
+
+        self.cur_position = cur_position
+        self.cur_yaw = yaw
         
         # RRT, get rrt goal 
         self.Map_Processor.update_obstacle()
@@ -315,20 +319,7 @@ class RRT(Node):
         # ipdb.set_trace()
         self.pure_pursuit(rrt_goal, cur_L)
 
-        # draw local goal Point
-        self.localgoalmarker.pose.position.x = interp_point[0]
-        self.localgoalmarker.pose.position.y = interp_point[1]
-        self.localgoal_markerpub.publish(self.localgoalmarker)        
-        
-        # draw rrt goal Point
-        x, y = rrt_goal[0], rrt_goal[1]
-        local_obs = np.array([x, y, 0, 1])
-        global_obs = local2global @ local_obs        
-        self.rrtgoalmarker.pose.position.x = global_obs[0]
-        self.rrtgoalmarker.pose.position.y = global_obs[1]
-        self.rrtgoal_markerpub.publish(self.rrtgoalmarker)  
-
-        # Visualization
+        # draw Ogrid
         self.ogridmarker.points = []
         for i, point in enumerate(self.Map_Processor.obstacles):
             x, y = point[0], point[1]
@@ -340,7 +331,21 @@ class RRT(Node):
             point.y = global_obs[1]
             point.z = 0.0
             self.ogridmarker.points.append(point)
-        self.ogrid_markerpub.publish(self.ogridmarker)         
+        self.ogrid_markerpub.publish(self.ogridmarker)
+        
+        # draw local goal Point
+        self.localgoalmarker.pose.position.x = interp_point[0]
+        self.localgoalmarker.pose.position.y = interp_point[1]
+        self.localgoal_markerpub.publish(self.localgoalmarker)        
+        
+        # draw rrt goal Point
+        x, y = rrt_goal[0], rrt_goal[1]
+        local_obs = np.array([x, y, 0, 1])
+        global_obs = local2global @ local_obs        
+        self.rrtgoalmarker.pose.position.x = global_obs[0]
+        self.rrtgoalmarker.pose.position.y = global_obs[1]
+        # self.localgoal_markerpub.publish(self.rrtgoalmarker)
+        self.rrtgoal_markerpub.publish(self.rrtgoalmarker)         
         
         self.rrtpathmarker.points = []
         for i, flow in enumerate(self.path):
@@ -366,7 +371,7 @@ class RRT(Node):
             point.y = global_obs[1]
             point.z = 0.0
             self.rrtpathmarker.points.append(point)            
-        self.rrtgoal_markerpub.publish(self.rrtpathmarker)             
+        self.rrtpath_markerpub.publish(self.rrtpathmarker)             
         
         # OGridMsg = self.Map_Processor.get_OGridMsg()
         # OGridMsg.info.origin = Pose()
@@ -378,6 +383,29 @@ class RRT(Node):
         # OGridMsg.info.origin.orientation.z = pose_msg.pose.pose.orientation.z
         # self.ogrid_pub.publish(OGridMsg)
 
+    def drawOgrid_callback(self):
+        # Visualization
+        yaw, cur_position = self.cur_yaw, self.cur_position
+        local2global = np.array([[np.cos(yaw), -np.sin(yaw), 0, cur_position[0]], 
+                                 [np.sin(yaw), np.cos(yaw), 0, cur_position[1]], 
+                                 [0, 0, 1, 0],
+                                 [0, 0, 0, 1]])
+
+        self.ogridmarker.points = []
+        for i, point in enumerate(self.Map_Processor.obstacles):
+            x, y = point[0], point[1]
+            local_obs = np.array([x, y, 0, 1])
+            global_obs = local2global @ local_obs
+            # print(x, y)
+            point = Point()
+            point.x = global_obs[0]
+            point.y = global_obs[1]
+            point.z = 0.0
+            self.ogridmarker.points.append(point)
+        self.ogrid_markerpub.publish(self.ogridmarker)
+        print('publish ogrid')  
+
+    
     def pure_pursuit(self, local_goalP, cur_L):
         gamma = 2*abs(local_goalP[1]) / (cur_L ** 2)
         if local_goalP[1] > 0:

@@ -193,7 +193,7 @@ class PurePursuit(Node):
         
         
         local_goalP = np.linalg.inv(local2global) @ np.array([interp_point[0], interp_point[1], 0, 1])
-        print(local_goalP)
+        # print(local_goalP)
         gamma = 2*abs(local_goalP[1]) / (cur_L ** 2)
         # TODO: calculate curvature/steering angle
         if local_goalP[1] > 0:
