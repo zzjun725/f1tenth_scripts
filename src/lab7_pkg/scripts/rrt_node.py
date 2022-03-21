@@ -124,10 +124,12 @@ class RRT(Node):
         scan_topic = "/scan"
         # ogrid_topic = '/ogrid'
         drive_topic = '/drive'
+        self.scan_gap = 3
         self.L = 0.8
         self.P = 0.4
         self.nearst_idx = 0
-        self.pathL = 5
+        self.pathL = 7
+        self.velocity = 2.0
         self.cur_position = np.zeros((2, 1))
         self.cur_yaw = 0
 
@@ -240,7 +242,7 @@ class RRT(Node):
 
         """
         # calculate the distance from the wall
-        theta_dist = self.scan_processor(scan_msg, gap=4)
+        theta_dist = self.scan_processor(scan_msg, gap=self.scan_gap)
         self.Map_Processor.update_npMap(theta_dist)
     
     def local2grid(self, coord):
@@ -412,7 +414,7 @@ class RRT(Node):
             steering_angle = self.P * gamma
         else:
             steering_angle = self.P * -gamma
-        velocity = 1.0
+        velocity = self.velocity
         if abs(steering_angle) >=1:
             steering_angle = steering_angle / 2
         
