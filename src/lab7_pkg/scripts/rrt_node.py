@@ -60,6 +60,7 @@ class OGrid:
         self.y_center = 0
         self.x_coord = self.x_center*self.r
         self.y_coord = 0
+        self.goal_threshold = 0.1
         self.center = np.array([self.x_coord, self.y_coord])
         self.nparrMap = np.zeros((w, h)).astype(np.int8)
         # self.map = MapMetaData()
@@ -125,13 +126,14 @@ class RRT(Node):
         # ogrid_topic = '/ogrid'
         drive_topic = '/drive'
         self.scan_gap = 3
-        self.L = 0.8
+        self.L = 1.0
         self.P = 0.4
         self.nearst_idx = 0
-        self.pathL = 7
+        self.pathL = 2
         self.velocity = 2.0
         self.cur_position = np.zeros((2, 1))
         self.cur_yaw = 0
+        self.circle_radius = 0.5
 
         # you could add your own parameters to the rrt_params.yaml file,
         # and get them here as class attributes as shown above.
@@ -319,7 +321,7 @@ class RRT(Node):
         # print(local_goalP[:2])
         # print(rrt_goal)
         # ipdb.set_trace()
-        self.pure_pursuit(rrt_goal, cur_L)
+        # self.pure_pursuit(rrt_goal, cur_L)
 
         # draw Ogrid
         self.ogridmarker.points = []
@@ -478,7 +480,52 @@ class RRT(Node):
         # print("1",dist)
         if dist > self.max_dist:
             target_flows = parent_node.flow + (target_flows - parent_node.flow) / dist * self.max_dist
-        return target_flows
+        dist = np.linalg.norm(target_flows - parent_node.flow)
+        return target_flows, dist
+
+    def rewire(self,idx_in_dict, cost_, dist_,dict,new_node,grid_map):
+        if idx_in_dict is not None:
+            current_node_cost=new_node.cost
+            other_nodes_cost = np.array(cost_)
+            dist_btw_circle_node=dist_[idx_in_dict] # all distance bewteen currect node and all other node in circle
+            circle_node_cost=other_nodes_cost[idx_in_dict]
+            #print("currnet_nodes_cost",current_node_cost)
+            potential_cost=dist_btw_circle_node+current_node_cost
+
+            #print(potential_cost.shape,circle_node_cost.shape)
+            diff=potential_cost-circle_node_cost
+            #print("-------------",np.where(diff<0.)[0])
+            idx=np.where(diff<0.)[0]
+            for id in idx_in_dict[idx]:
+                interp_points = self.interp_between_2points(dict[id].flow, new_node.flow)
+                interp_points_index = self.convert_coord2Index(interp_points, grid_map)
+                if self.check_free_space(interp_points_index, grid_map):
+                    dict[id].cost=dist_[id]+current_node_cost
+                    dict[id].parent=new_node
+            # for node in dict[idx_in_dict[idx]]:
+            #     node.cost=potential_cost[idx]
+            #     node.parent=new_node
+
+    def get_parent_by_pathCost(self, flows,target, dict, cost):
+        cost_ = np.array(cost)
+        # print("cost",cost_)
+        diff = flows - target
+        dist = np.linalg.norm(diff, axis = 1)
+        # print("diff",dist)
+        # print(np.where(dist<0.)[0])
+
+        index_in_dict = np.where(dist < self.circle_radius)[0]
+
+        dist_from_target_root = dist[index_in_dict] + cost_[index_in_dict]
+        # print("dist_from_target_root",dist_from_target_root)
+        if (len(list(dist_from_target_root)) != 0):
+            idx = np.argmin(dist_from_target_root)  # the idx is the index of index_in_dict, not in dict
+            # print()
+            return dict[index_in_dict[idx]], dist[index_in_dict][idx], index_in_dict,dist
+            # print("idx",idx)
+        else:
+            idx = np.argmin(dist)
+            return dict[idx], dist[idx], None,dist
 
     def plan(self, start, goal, grid_map):
         """
@@ -490,30 +537,39 @@ class RRT(Node):
         first_flow = start
         self.goal_flow = goal
         # grid_map = self.init_gridMap()
-        first_node = RRTNode(flow = first_flow, parent = None, cost = None, is_root = True)
+        first_node = RRTNode(flow = first_flow, parent = None, cost = 0, is_root = True)
         self.tree = []
         self.nodes = [first_node]
-
+        
         dic = {}
         node = first_node
         temp = node.flow.reshape(1, 2)
         dic[temp.shape[0] - 1] = first_node
+        cost_ = [node.cost]
 
         for i in range(5000):
             if np.random.random() > 0.5:
-                target_flow = self.sample()
-            else:
                 target_flow = goal
+            else:
+                target_flow = self.sample()
             parent_node = self.get_nearest_node_by_dist(temp, target_flow, dic)
-            target_flow = self.scale_target_flows(target_flow, parent_node)
+            target_flow, dist_btw = self.scale_target_flows(target_flow, parent_node)
 
-            interp_points=self.interp_between_2points(target_flow,parent_node.flow)
-            interp_points_index=self.convert_coord2Index(interp_points,grid_map)
-            if self.check_free_space(interp_points_index,grid_map):
+            parent_node, dist_btw, idx_of_dic_in_nodes_Cirlce,dist_all = self.get_parent_by_pathCost(temp, target_flow, dic,cost_)
+            # ipdb.set_trace()
+            interp_points = self.interp_between_2points(target_flow, parent_node.flow)
+            interp_points_index = self.convert_coord2Index(interp_points, grid_map)
+            if self.check_free_space(interp_points_index, grid_map):
+                # print("----------------------------------")
+                new_node = RRTNode(flow = target_flow, parent = parent_node, cost = parent_node.cost + dist_btw,
+                                is_root = False)
+                ########### rewire ##############
 
-                new_node = RRTNode(flow = target_flow, parent = parent_node, cost = None, is_root = False)
+                self.rewire(idx_of_dic_in_nodes_Cirlce, cost_, dist_all,dic,new_node,grid_map)
+
+                #################################
                 self.tree.append(((new_node.flow[0], new_node.flow[1]),
-                                    (parent_node.flow[0], parent_node.flow[1])))
+                                  (parent_node.flow[0], parent_node.flow[1])))
                 node = new_node
 
                 # print(temp.shape,temp)
@@ -522,6 +578,7 @@ class RRT(Node):
                 temp = np.concatenate((temp, t), axis = 0)
                 # print("temp",temp)
                 dic[temp.shape[0] - 1] = node
+                cost_.append(node.cost)
                 # print(temp.shape,temp)
                 # temp = torch.cat((temp, torch.unsqueeze(node.flows, dim = 0)), 0)
 
