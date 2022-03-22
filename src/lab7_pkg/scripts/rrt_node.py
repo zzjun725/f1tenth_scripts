@@ -319,7 +319,7 @@ class RRT(Node):
         # print(local_goalP[:2])
         # print(rrt_goal)
         # ipdb.set_trace()
-        self.pure_pursuit(rrt_goal, cur_L)
+        # self.pure_pursuit(rrt_goal, cur_L)
 
         # draw Ogrid
         self.ogridmarker.points = []
@@ -500,7 +500,7 @@ class RRT(Node):
         dic[temp.shape[0] - 1] = first_node
 
         for i in range(5000):
-            if np.random.random() > 0.5:
+            if np.random.random() > 0.1:
                 target_flow = self.sample()
             else:
                 target_flow = goal
