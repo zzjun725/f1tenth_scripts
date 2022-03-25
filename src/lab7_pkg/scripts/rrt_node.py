@@ -121,7 +121,7 @@ class RRT(Node):
         # topics, not saved as attributes
         # TODO: grab topics from param file, you'll need to change the yaml file
         super().__init__('RRT')
-        pose_topic = "ego_racecar/odom"
+        pose_topic = "pf/pose/odom"
         scan_topic = "/scan"
         # ogrid_topic = '/ogrid'
         drive_topic = '/drive'
