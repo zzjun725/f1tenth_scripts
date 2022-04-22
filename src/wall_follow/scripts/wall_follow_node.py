@@ -6,6 +6,7 @@ import numpy as np
 from math import pi, atan2, cos, sin
 from sensor_msgs.msg import LaserScan
 from ackermann_msgs.msg import AckermannDriveStamped
+import time
 
 class WallFollow(Node):
     """ 
@@ -26,26 +27,28 @@ class WallFollow(Node):
             LaserScan, lidarscan_topic, self.scan_callback, 10
         )        
         # TODO: set PID gains
-        self.kp = 10
-        self.kd = 0.1
+        self.kp = 16
+        self.kd = 0.2
         # self.kd = 0
-        self.ki = 0.01
+        self.ki = 0
 
         # TODO: store history
         self.integral = 0
         self.integral_thres = 8
-        self.prev_error = 0 
+        self.prev_error = 0.0
         self.error = 0
-        self.targetD = 0.9
+        self.targetD = 0.7
         self.lookforwardD = 1.0
-        self.time_interval = 0.01
+        # self.time_interval = 0.02
+        self.prev_time = 0
+        self.time_thres = 0.02
         # self.counter = 0
         # self.counter_thres = 2
 
         # TODO: store any necessary values you think you'll need
   
     
-    def pid_control(self, error, velocity):
+    def pid_control(self, error, velocity, time_interval):
         """
         Based on the calculated error, publish vehicle control
 
@@ -58,26 +61,27 @@ class WallFollow(Node):
         """
         P_term = self.kp*error
 
-        self.integral += error*self.time_interval
+        self.integral += error*time_interval
         I_term = min(self.integral_thres, self.ki*self.integral)
 
-        D_term = self.kd*(abs(error) - abs(self.prev_error)) / self.time_interval
+        D_term = self.kd*(error - self.prev_error) / time_interval
         self.prev_error = error
+
         # TODO: Use kp, ki & kd to implement a PID controller
         steering_angle = P_term + I_term + D_term
         print(f'P_term{P_term}  ', f'I_term{I_term}  ', f'D_term{D_term}  ')
         print(f'steering_angle: {steering_angle}')
         if 0 <= abs(steering_angle) <= 10:
-            velocity = 1.0
+            velocity = 3.5
         elif 10 < abs(steering_angle) < 20:
-            velocity = 0.8
-        if abs(steering_angle) <= 0.5:
-            steering_angle = 0.0
+            velocity = 1.0
+        # if abs(steering_angle) <= 0.5:
+        #     steering_angle = 0.0
         # print(f'velocity: {velocity}')
         # TODO: fill in drive message and publish
         # velocity = 0.05
         self.ackermann_ord.drive.speed = velocity
-        self.ackermann_ord.drive.steering_angle = steering_angle
+        self.ackermann_ord.drive.steering_angle = steering_angle * pi / 180
         self.drive_publisher.publish(self.ackermann_ord)
 
     def scan_callback(self, scan_msg):
@@ -90,18 +94,10 @@ class WallFollow(Node):
         Returns:
             None
         """
+        # import ipdb; ipdb.set_trace()
         angle_increment = scan_msg.angle_increment
         angle_min = scan_msg.angle_min
-        distances = scan_msg.ranges
-        ranges = scan_msg.ranges
-        # print(angle_min, scan_msg.angle_max, angle_increment)
-        # get error
-        minus_pi_range_idx = int((-pi/2 - angle_min) // angle_increment)
-        plus_pi_range_idx = int((pi/2 - angle_min) // angle_increment)
-
-        # print(f'minus_pi_range_idx: {minus_pi_range_idx, ranges[minus_pi_range_idx]}')
-        # print(f'plus_pi_range_idx: {plus_pi_range_idx, ranges[plus_pi_range_idx]}')       
-        # print(f'zero_range_idx: {int((0- angle_min) // angle_increment), ranges[plus_pi_range_idx]}')       
+        distances = scan_msg.ranges 
 
         theta = pi/6
         b = distances[int((pi/2 - angle_min) // angle_increment)]
@@ -114,9 +110,19 @@ class WallFollow(Node):
         # error = -error
         # print(f'D:{D}', f'lookforwardD:{self.lookforwardD*sin(alpha)}')
         # PID
-        velocity = 0.3 # TODO: calculate desired car velocity based on error
+        velocity = 2.0 # TODO: calculate desired car velocity based on error
         # if self.counter >= self.counter_thres:
-        self.pid_control(error, velocity) # TODO: actuate the car with PID
+        cur_time = scan_msg.header.stamp.nanosec/1e9 + scan_msg.header.stamp.sec
+        time_interval = cur_time - self.prev_time
+        if self.prev_time != 0.0:
+            if time_interval > self.time_thres:
+                self.pid_control(error, velocity, time_interval) # TODO: actuate the car with PID
+                self.prev_time = cur_time
+                # pass
+        else:
+            self.prev_time = cur_time
+        print(time_interval)
+        # time.sleep(3)
         #     self.counter = 1
         # else:
         #     self.counter += 1

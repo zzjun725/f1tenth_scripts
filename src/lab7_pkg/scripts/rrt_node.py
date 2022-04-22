@@ -38,12 +38,12 @@ for file in os.listdir(log_position):
     if file.startswith('wp'):
         wp_log = csv.reader(open(os.path.join(log_position, file)))
         # import ipdb; ipdb.set_trace()
-        print('load wp_log')
+        print(f'load wp_log: {file}')
 waypoints = []
 for i, row in enumerate(wp_log):
     # print(row)
-    if (i % 50 != 0):
-        continue
+    # if (i % 50 != 0):
+    #     continue
     if len(row) > 2:
         x, y = row[0], row[1]
         x, y = float(x), float(y)
@@ -319,7 +319,7 @@ class RRT(Node):
         # print(local_goalP[:2])
         # print(rrt_goal)
         # ipdb.set_trace()
-        # self.pure_pursuit(rrt_goal, cur_L)
+        self.pure_pursuit(rrt_goal, cur_L)
 
         # draw Ogrid
         self.ogridmarker.points = []
@@ -509,6 +509,8 @@ class RRT(Node):
 
             interp_points=self.interp_between_2points(target_flow,parent_node.flow)
             interp_points_index=self.convert_coord2Index(interp_points,grid_map)
+            # import ipdb;
+            # ipdb.set_trace()
             if self.check_free_space(interp_points_index,grid_map):
 
                 new_node = RRTNode(flow = target_flow, parent = parent_node, cost = None, is_root = False)

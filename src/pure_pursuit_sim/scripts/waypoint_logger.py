@@ -11,7 +11,7 @@ from nav_msgs.msg import Odometry
 import transforms3d
 import os
 
-home = '/sim_ws'
+home = '/sim_ws/src'
 os.makedirs(home+'/wp_log', exist_ok = True)
 
 class WaypointsLogger(Node):
@@ -21,9 +21,10 @@ class WaypointsLogger(Node):
     """
     def __init__(self):
         super().__init__('WaypointsLogger')
-        self.log = open(strftime(home+'/wp_log/wp-%Y-%m-%d-%H-%M-%S',gmtime())+'.csv', 'w')
+        self.log = open(home + '/wp_log/wp_sim' +'.csv', 'w')
         self.odom_subscriber = self.create_subscription(
             Odometry, 'ego_racecar/odom', self.logger_callback, 10)
+        self.last_x = 0
         # self.times = 0
         
 
@@ -44,10 +45,13 @@ class WaypointsLogger(Node):
                                 data.twist.twist.linear.z]),2)
 
 
-        self.log.write('%f, %f, %f, %f\n' % (data.pose.pose.position.x,
-                                        data.pose.pose.position.y,
-                                        euler[2],
-                                        speed))
+        x, y = data.pose.pose.position.x, data.pose.pose.position.y
+        if abs(x-self.last_x) > 0.001:
+            self.log.write('%f, %f, %f, %f\n' % (x,
+                                            y,
+                                            euler[2],
+                                            speed))
+            self.last_x = x
 
 def main(args=None):
     rclpy.init(args=args)

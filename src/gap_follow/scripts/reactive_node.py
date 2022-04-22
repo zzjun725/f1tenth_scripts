@@ -36,12 +36,19 @@ class ReactiveFollowGap(Node):
         )
 
         # constant
-        self.rb = 20
+        self.rb = 10
         self.counter = 0
         self.counter_thres = 2
         self.get_logger().info('Node_start')
-        self.safe_thres = 1.2
-        self.danger_thres = 0.8          
+        self.safe_thres = 2.0
+        self.danger_thres = 1.8
+        self.cut_thres = 2.0
+        self.max_speed = 4.5
+        self.min_speed = 4.0
+        self.max_gap = 300
+        self.min_gap = 20
+        self.drive = True
+        self.window_size = 20          
 
     def preprocess_lidar(self, ranges):
         """ Preprocess the LiDAR scan array. Expert implementation includes:
@@ -49,7 +56,7 @@ class ReactiveFollowGap(Node):
             2.Rejecting high values (eg. > 3m)
         """
         proc_ranges = []
-        window_size = 10
+        window_size = self.window_size
         for i in range(0, len(ranges), window_size):
             cur_mean = round(sum(ranges[i:i+window_size])/window_size, 5)
             # if cur_mean >= self.safe_thres:
@@ -77,35 +84,12 @@ class ReactiveFollowGap(Node):
             else:
                 p += 1
         return ranges
-
-    def find_max_gap(self, free_space_ranges):
-        """ Return the start index & end index of the max gap in free_space_ranges
-        """
-        return None
     
     def find_best_point(self, start_i, end_i, closest_i, ranges):
         """Start_i & end_i are start and end indicies of max-gap range, respectively
         Return index of best point in ranges
 	    Naive: Choose the furthest point within ranges and go there
         """
-        # farmost_p_left = start_i
-        # farmost_p_right = start_i
-        # farmost_p_range = ranges[start_i]
-        # p = start_i
-        # while p < end_i:
-        #     if ranges[p] >= farmost_p_range:
-        #         farmost_p_left = p
-        #         farmost_p_range = ranges[p]
-        #         p += 1
-        #         while p < end_i and ranges[p]==ranges[p-1]:
-        #             p += 1
-        #         farmost_p_right = p - 1
-        #     else:
-        #         p += 1
-        # if abs(farmost_p_left-closest_i) > abs(farmost_p_right-closest_i):
-        #     return farmost_p_left
-        # else:
-        #     return farmost_p_right
         safe_p_left = start_i
         safe_p_right = end_i
         p = start_i
@@ -115,11 +99,15 @@ class ReactiveFollowGap(Node):
                 safe_p_left = p
                 p+=1
                 # while p < end_i and ranges[p] >= self.safe_thres and p-safe_p_left <= 290:
-                while p < end_i and ranges[p] >= self.safe_thres and p-safe_p_left <= 350:
+                while p < end_i and ranges[p] >= self.safe_thres and p-safe_p_left <= self.max_gap and ranges[p] - ranges[max(0, p-1)] < self.cut_thres:
                     p += 1
-                safe_p_right = p-1
+                safe_p_right = max(0, p-1)
                 if safe_p_right != safe_p_left:
+                    # try:
                     safe_range.put((-(np.max(ranges[safe_p_left:safe_p_right])), (safe_p_left, safe_p_right)))
+                    # except:
+                        # import ipdb; ipdb.set_trace()
+                        # continue
             else:
                 p += 1
         if safe_range.empty():
@@ -128,28 +116,10 @@ class ReactiveFollowGap(Node):
         else:
             while not safe_range.empty():
                 safe_p_left, safe_p_right = safe_range.get()[1]
-                # farmost = np.argmax(ranges[safe_p_left:safe_p_right]) + safe_p_left
-                # shrink a constant
-                # target = np.argmax(ranges[safe_p_left:safe_p_right]) + safe_p_left
-                # if abs(safe_p_left-closest_i) > abs(safe_p_right-closest_i):
-                #     target = min(safe_p_left + 5*self.rb, safe_p_right)
-                # else:
-                #     target = max(safe_p_right - 5*self.rb, safe_p_left)
-
                 target = (safe_p_left+safe_p_right)//2
-                # return np.argmax(ranges[safe_p_left:safe_p_right]) + safe_p_left
-                # if abs(safe_p_left-farmost) > abs(safe_p_right-farmost):
-                #     target = (safe_p_left+2*farmost)//3
-                #     # return safe_p_left
-                # else:
-                #     target = (2*farmost+safe_p_right)//3
-                # if 0 <= target < 1080:
-                if 179 <= target <= 900:
-                # if 250 <= target <= 800:
+                if 179 <= target <= 900 and safe_p_right-safe_p_left > self.min_gap:
                     return target
             return target
-                # return safe_p_right
-        # return (farmost_p_right + farmost_p_left) // 2
 
     def lidar_callback(self, scan_msg):
         """ Process each LiDAR scan as per the Follow Gap algorithm & publish an AckermannDriveStamped Message
@@ -184,17 +154,19 @@ class ReactiveFollowGap(Node):
         farmost_p_idx = self.find_best_point(start_i=0, end_i=len(proc_ranges), closest_i = closest_p_idx, ranges=proc_ranges)
         steering_angle = angle_min + farmost_p_idx*angle_increment
         # velocity = 6.5
-        velocity = 3.0
+        velocity = self.max_speed
 
         print(f'farmost_p_idx: {farmost_p_idx}')
         print(f'farmost_p_range: {proc_ranges[farmost_p_idx]}')
         print(f'steering_angle: {steering_angle*180/pi}')
-        if abs(steering_angle) >=3:
-            velocity = 0.5
+        if abs(steering_angle) >=0.8:
+            velocity = self.min_speed
         #Publish Drive message
         self.ackermann_ord.drive.speed = velocity
         self.ackermann_ord.drive.steering_angle = steering_angle
-        self.drive_publisher.publish(self.ackermann_ord)            
+
+        if self.drive:
+            self.drive_publisher.publish(self.ackermann_ord)            
 
 
 def main(args=None):
