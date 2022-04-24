@@ -1,5 +1,5 @@
-map_name: race_v3
-map_img_ext: .pgm
+image: race_v3.pgm
+mode: trinary
 resolution: 0.05
 origin: [-14.7, -14.1, 0]
 negate: 0

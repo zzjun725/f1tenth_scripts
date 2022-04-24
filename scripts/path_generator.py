@@ -41,7 +41,7 @@ if __name__ == "__main__":
     # Read image
     img_path = "./maps/" + input_map + input_map_ext
     input_img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
-    input_img = input_img[:, 80:]
+    input_img = input_img[:, :]
     print(input_img.shape)
     h, w = input_img.shape[:2]
 
@@ -57,8 +57,8 @@ if __name__ == "__main__":
         if cv2.contourArea(contour) < 70:
             cv2.fillPoly(output_img, pts=[contour], color=(0, 0, 0))
 
-    sim_map = output_img
-    cv2.imwrite("./maps/" + input_map+'.png', ~sim_map)
+    # sim_map = output_img
+    # cv2.imwrite("./maps/" + input_map+'.png', ~sim_map)
 
     # Dilate & Erode
     kernel = np.ones((5, 5), np.uint8)

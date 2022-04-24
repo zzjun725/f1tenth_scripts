@@ -12,7 +12,6 @@ from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
 # logging.basicConfig(level=logging.INFO,
 #                     filename='gap_follow_log',
 #                     filemode='a')
-ROS_HOME='/sim_ws/log/gap_follow'
 
 class ReactiveFollowGap(Node):
     """ 
@@ -41,14 +40,14 @@ class ReactiveFollowGap(Node):
         self.counter_thres = 2
         self.get_logger().info('Node_start')
         self.safe_thres = 2.0
-        self.danger_thres = 1.8
+        self.danger_thres = 1.0
         self.cut_thres = 2.0
-        self.max_speed = 4.5
-        self.min_speed = 4.0
+        self.max_speed = 4.0
+        self.min_speed = 3.0
         self.max_gap = 300
-        self.min_gap = 20
+        self.min_gap = 50
         self.drive = True
-        self.window_size = 20          
+        self.window_size = 20
 
     def preprocess_lidar(self, ranges):
         """ Preprocess the LiDAR scan array. Expert implementation includes:
@@ -65,10 +64,6 @@ class ReactiveFollowGap(Node):
                 proc_ranges.append(cur_mean)
         proc_ranges = np.array(proc_ranges)
         # print(f'num of safe_points{sum(proc_ranges==self.safe_thres)}')
-        # print(np.min(proc_ranges))
-        # print(f'len of proc_ranges: {len(proc_ranges)}')
-        # print(f'begin of proc_ranges {proc_ranges[0]}')
-        # print(f'end of proc_ranges{proc_ranges[-1]}')
 
         return proc_ranges
 
@@ -118,6 +113,7 @@ class ReactiveFollowGap(Node):
                 safe_p_left, safe_p_right = safe_range.get()[1]
                 target = (safe_p_left+safe_p_right)//2
                 if 179 <= target <= 900 and safe_p_right-safe_p_left > self.min_gap:
+                    print(f'left: {safe_p_left}, right: {safe_p_right}')
                     return target
             return target
 
@@ -135,21 +131,11 @@ class ReactiveFollowGap(Node):
         closest_p_idx = np.argmin(proc_ranges)
         closest_angle = angle_min + closest_p_idx*angle_increment
 
-        print(f'closest_idx_range {proc_ranges[closest_p_idx]}')
-        print(f'closest_p_idx: {closest_p_idx}')
-        print(f'closest_angle: {closest_angle}')
+        # print(f'closest_idx_range {proc_ranges[closest_p_idx]}')
+        # print(f'closest_p_idx: {closest_p_idx}')
+        # print(f'closest_angle: {closest_angle}')
         #Eliminate all points inside 'bubble' (set them to zero)
         proc_ranges = self.refine_danger_range(start_i=0, end_i=len(proc_ranges), ranges=proc_ranges)
-
-        #Find max length gap
-        #Find the best point in the gap
-        # mid = len(proc_ranges) // 2
-        # if closest_p_idx <= mid:
-        #     farmost_p_idx = self.find_best_point(start_i=closest_p_idx+self.rb, end_i=n-1, 
-        #     closest_i = closest_p_idx, ranges=proc_ranges)
-        # else:
-        #     farmost_p_idx = self.find_best_point(start_i=0, end_i=closest_p_idx-self.rb-1, 
-        #     closest_i=closest_p_idx, ranges=proc_ranges)
 
         farmost_p_idx = self.find_best_point(start_i=0, end_i=len(proc_ranges), closest_i = closest_p_idx, ranges=proc_ranges)
         steering_angle = angle_min + farmost_p_idx*angle_increment
@@ -159,7 +145,7 @@ class ReactiveFollowGap(Node):
         print(f'farmost_p_idx: {farmost_p_idx}')
         print(f'farmost_p_range: {proc_ranges[farmost_p_idx]}')
         print(f'steering_angle: {steering_angle*180/pi}')
-        if abs(steering_angle) >=0.8:
+        if abs(steering_angle) >=0.3:
             velocity = self.min_speed
         #Publish Drive message
         self.ackermann_ord.drive.speed = velocity
@@ -181,3 +167,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+

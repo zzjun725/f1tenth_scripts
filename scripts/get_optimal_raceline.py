@@ -19,8 +19,9 @@ import cv2
 script_dir = os.path.dirname(os.path.abspath(__file__))
 optimization_tool_dir = os.path.join(os.path.split(os.path.split(script_dir)[0])[0], 'global_racetrajectory_optimization')
 
+globalWpMinInterval = 0.1
 
-def smooth_waypoints(filename='race_v1.csv', gap_thres = 0.3, interpolate_times = 3):
+def smooth_waypoints(filename='race_v1.csv', gap_thres = 0.4, interpolate_times = 3):
     if filename:
         output_name = filename.split('.')[0] + '_smooth' + '.csv'
         with open(os.path.join(script_dir, filename)) as f:
@@ -38,21 +39,22 @@ def smooth_waypoints(filename='race_v1.csv', gap_thres = 0.3, interpolate_times 
                 if i > 1:
                     x, y = float(row[0]), float(row[1])
                     r, l = float(row[2]), float(row[3])
-                    if np.linalg.norm(np.array([x, y])-np.array([x_old, y_old])) > gap_thres:
-                        interp_points = [np.array([x_old, y_old, r_old, l_old]), np.array([x, y, r, l])]
-                        for _ in range(interpolate_times):
-                            i = 0
-                            n = len(interp_points)
-                            while i < n:
-                                interp_points.insert(i+1, (interp_points[i] + interp_points[i+1]) /2 )
-                                i+=2
-                        new_waypoints.extend(interp_points[1:])
-                        # import ipdb; ipdb.set_trace()
-                    else:
-                        new_waypoints.append(np.array([x, y, r, l]))
-                    x_old, y_old, r_old, l_old = x, y, r, l
+                    if abs(x-x_old) + abs(y-y_old) > globalWpMinInterval:
+                        if np.linalg.norm(np.array([x, y])-np.array([x_old, y_old])) > gap_thres:
+                            interp_points = [np.array([x_old, y_old, r_old, l_old]), np.array([x, y, r, l])]
+                            for _ in range(interpolate_times):
+                                i = 0
+                                n = len(interp_points)
+                                while i < n:
+                                    interp_points.insert(i+1, (interp_points[i] + interp_points[i+1]) /2 )
+                                    i+=2
+                            new_waypoints.extend(interp_points[1:])
+                            # import ipdb; ipdb.set_trace()
+                        else:
+                            new_waypoints.append(np.array([x, y, r, l]))
+                        x_old, y_old, r_old, l_old = x, y, r, l
             ## check the end point with the first
-            print(f'origin wp number{i-1}')
+            # print(f'origin wp number{i-1}')
             # import ipdb; ipdb.set_trace()
             if np.linalg.norm(np.array([x_old, y_old])-np.array(first_point)[:2]) > gap_thres:
                 interp_points = [np.array([x_old, y_old, r_old, l_old]), np.array([first_point])]
@@ -102,6 +104,7 @@ def centerline_to_optimal_raceline(filename='wp.csv', left=0.5, right=0.5, drift
     # print(output_path)
     # print(output_path2)
     os.system(f'cp {output_path} {output_path2}')
+    os.system(f'cp {output_path} /home/zzjun/Documents/f1tenth/src/wp_log/optimal_raceline.csv')
 
 # centerline_to_optimal_raceline()
 
@@ -120,6 +123,7 @@ def draw_optimalwp(filename='wp.csv', ref_filename='wp_interp.csv'):
                 row = row[0].split(';')
                 x.append(float(row[1]))
                 y.append(float(row[2]))
+    print(f'length of optimal{len(x)}')
     plt.plot(x, y, 'bo', markersize=0.5)
     
     ref_x = []
@@ -162,15 +166,17 @@ def read_wp(wpfile='./wp/wp.csv', removelap=True, interp=False):
     wp_x = []
     wp_y = []
     last_x = 0
+    last_y = 0
     with open(os.path.join(script_dir, wpfile)) as f:
         print(f'load {wpfile}')
         waypoints_file = csv.reader(f)
         for i, row in enumerate(waypoints_file):
             x_, y_ = float(row[0]), float(row[1])
-            if abs(x_ - last_x) > 0.0001:
+            if abs(x_ - last_x) + abs(y_ - last_y) > globalWpMinInterval:
                 wp_x.append(x_)
                 wp_y.append(y_)
                 last_x = x_
+                last_y = y_
 
     if removelap:
         wp_x, wp_y = remove_overlap_wp(wp_x, wp_y)
@@ -307,11 +313,11 @@ def show_result(imgs, title):
         cv2.destroyAllWindows()
         return True
 
-def fix_slam_map_for_sim(mapname='race_v1'):
+def fix_slam_map_for_sim(mapname='race_v1', H_cut=100, W_cut=0):
     # Read image
     img_path = os.path.join('./maps', mapname+'.pgm')
     input_img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
-    input_img = input_img[:, 80:]
+    input_img = input_img[H_cut:, W_cut:]
     print(input_img.shape)
     h, w = input_img.shape[:2]
 
@@ -324,15 +330,19 @@ def fix_slam_map_for_sim(mapname='race_v1'):
     # Find contours and only keep larger ones
     contours, hierarchy = cv2.findContours(output_img, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     for i, contour in enumerate(contours):
-        if cv2.contourArea(contour) < 70:
+        if cv2.contourArea(contour) < 40:
             cv2.fillPoly(output_img, pts=[contour], color=(0, 0, 0))
+
+    # dilate
+    kernel = np.ones((3, 3), np.uint8)
+    output_img = cv2.dilate(output_img, kernel, iterations=1)
 
     show_result([input_img, output_img], title="input & output")
     sim_map = output_img
     output_path = os.path.join('./maps', mapname+'.png')
     cv2.imwrite(output_path, ~sim_map)    
     
-    os.system(f'cp {output_path} ../src/f1tenth_gym_ros/maps/{mapname}.png')
+    os.system(f'cp {output_path} ../src/f1tenth_gym_ros/maps/{mapname}.pgm')
     map_yaml_path = os.path.join('./maps', mapname+'.yaml')
     os.system(f'cp {map_yaml_path} ../src/f1tenth_gym_ros/maps/{mapname}.yaml')
 
