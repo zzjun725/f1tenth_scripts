@@ -21,7 +21,7 @@ optimization_tool_dir = os.path.join(os.path.split(os.path.split(script_dir)[0])
 
 globalWpMinInterval = 0.1
 
-def smooth_waypoints(filename='race_v1.csv', gap_thres = 0.4, interpolate_times = 3):
+def smooth_waypoints(filename='race_v1.csv', gap_thres = 0.4, interpolate_times = 2):
     if filename:
         output_name = filename.split('.')[0] + '_smooth' + '.csv'
         with open(os.path.join(script_dir, filename)) as f:
@@ -136,6 +136,7 @@ def draw_optimalwp(filename='wp.csv', ref_filename='wp_interp.csv'):
             ref_x.append(float(row[0]))
             ref_y.append(float(row[1]))  
 
+    plt.axis('equal')
     plt.plot(ref_x, ref_y, '-ro', markersize=0.1)
     plt.show()
 
@@ -204,6 +205,7 @@ def draw_wp(wpfile='wp.csv', removelap=True):
     x, y = read_wp(wpfile, removelap)
     # plt.plot(x, y, 'o', markersize=0.5)
     sns.scatterplot(x=x, y=y, hue=len(x) - np.arange(len(x)))
+    plt.axis('equal')
     plt.show()
 
 def visualize_curvature_for_wp(wpfile='./wp/wp.csv'):

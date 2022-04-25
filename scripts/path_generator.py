@@ -54,7 +54,7 @@ if __name__ == "__main__":
     # Find contours and only keep larger ones
     contours, hierarchy = cv2.findContours(output_img, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     for i, contour in enumerate(contours):
-        if cv2.contourArea(contour) < 70:
+        if cv2.contourArea(contour) < 50:
             cv2.fillPoly(output_img, pts=[contour], color=(0, 0, 0))
 
     # sim_map = output_img

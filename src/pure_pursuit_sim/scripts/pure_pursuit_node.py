@@ -28,7 +28,10 @@ wp_gap = 1
 node_publish = False
 node_execute = False
 use_optimal = True
-velocity_scale = 1.1
+velocity_scale = 0.5
+
+def safe_changeIdx(length, inp, plus):
+    return (inp + plus + length) % (length) 
 
 class TrackingPlanner:
     def __init__(self, wp_path=wp_path, wp_gap = 0, debug=True):
@@ -82,7 +85,7 @@ class TrackingPlanner:
                     # self.wp.append([y, x, v])
                 else:
                     self.wpGapCounter += 1
-        self.wp = np.array(self.wp).T  # (3, n), n is the number of waypoints
+        self.wp = np.array(self.wp[:-1]).T  # (3, n), n is the number of waypoints
         self.wpNum = len(self.wp[0])
         print(self.wpNum)
     
@@ -103,12 +106,12 @@ class PurePursuitPlanner(TrackingPlanner):
         super().__init__(wp_path=wp_path, wp_gap=0, debug=debug)
         # self.wp = []
         self.minL = 0.5
-        self.maxL = 2.5
-        self.minP = 0.7
-        self.maxP = 1.0
+        self.maxL = 2.0
+        self.minP = 0.6
+        self.maxP = 0.9
         self.interpScale = 20
-        self.Pscale = 8
-        self.Lscale = 8
+        self.Pscale = 5
+        self.Lscale = 5
         self.interp_P_scale = (self.maxP-self.minP) / self.Pscale
         self.interp_L_scale = (self.maxL-self.minL) / self.Lscale
         self.prev_error = 0
@@ -165,15 +168,15 @@ class PurePursuitPlanner(TrackingPlanner):
         #### get nearest waypoint ### 
 
         #### interpolation ### 
-        if segment_end != 0:
-            x_array = np.linspace(wp_xyaxis[segment_end-1][0], wp_xyaxis[segment_end][0], self.interpScale)
-            y_array = np.linspace(wp_xyaxis[segment_end-1][1], wp_xyaxis[segment_end][1], self.interpScale)
-            v_array = np.linspace(self.wp[2][segment_end-1], self.wp[2][segment_end], self.interpScale)
-            xy_interp = np.vstack([x_array, y_array])
-            dist_interp = np.linalg.norm(xy_interp-cur_position.reshape(2, 1), axis=0) - targetL
-            i_interp = np.argmin(np.abs(dist_interp))
-            target_global = np.array([x_array[i_interp], y_array[i_interp]])
-            target_v = v_array[i_interp]
+        segment_begin = safe_changeIdx(self.wpNum, segment_end, -1)
+        x_array = np.linspace(wp_xyaxis[segment_begin][0], wp_xyaxis[segment_end][0], self.interpScale)
+        y_array = np.linspace(wp_xyaxis[segment_begin][1], wp_xyaxis[segment_end][1], self.interpScale)
+        v_array = np.linspace(self.wp[2][segment_begin], self.wp[2][segment_end], self.interpScale)
+        xy_interp = np.vstack([x_array, y_array])
+        dist_interp = np.linalg.norm(xy_interp-cur_position.reshape(2, 1), axis=0) - targetL
+        i_interp = np.argmin(np.abs(dist_interp))
+        target_global = np.array([x_array[i_interp], y_array[i_interp]])
+        target_v = v_array[i_interp]
         #### interpolation ### 
 
         cur_L = np.linalg.norm(cur_position-target_global)

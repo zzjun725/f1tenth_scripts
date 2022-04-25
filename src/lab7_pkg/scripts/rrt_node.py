@@ -43,7 +43,7 @@ wp_gap = 1
 node_publish = True
 node_execute = True
 use_optimal = True
-velocity_scale = 0.7
+velocity_scale = 0.8
 
 # gridWorld
 OGrid_R = 0.05
@@ -52,10 +52,11 @@ OGrid_x_max = 4
 OGrid_y_min = -3
 OGrid_y_max = 3
 
-checking_span = 0.2
-checking_offset = 0.05
-checking_interp_num = 10
-avoid_span = 0.6
+default_check_span = 0.2
+check_offset = 0.05
+check_interp_num = 10
+avoid_span = 0.3
+avoid_offset = 0.2
 avoid_interp_num = 5
 normal_span = 2.5
 normal_interpScale = 20
@@ -77,7 +78,8 @@ def get_span_from_two_point(span_L=0.3, interp_num=10, pA=None, pB=None, return_
     # vector from A to B
     x_axisVector = np.array([1.0, 0.0])
     AB_Vector = pB - pA
-    AB_th = np.arccos(np.dot(AB_Vector, x_axisVector) / (LA.norm(AB_Vector, ord=2)*1.0))
+    # AB_th = np.arccos(np.dot(AB_Vector, x_axisVector) / (LA.norm(AB_Vector, ord=2)*1.0))
+    AB_th = np.arctan2(pB[1]-pA[1], pB[0]-pA[0])
     # print(np.dot(AB_Vector, x_axisVector))
     # print(LA.norm(AB_Vector, ord=2))
     # print(AB_th*180/np.pi)
@@ -102,7 +104,8 @@ def get_normal_from_two_point(normal_L=normal_span, interp_num = normal_span*nor
     x_axisVector = np.array([1.0, 0.0])
     AB_Vector = pB - pA
     AB_midpoint = (pB+pA) / 2
-    AB_th = np.arccos(np.dot(AB_Vector, x_axisVector) / (LA.norm(AB_Vector, ord=2)*1.0))
+    # AB_th = np.arccos(np.dot(AB_Vector, x_axisVector) / (LA.norm(AB_Vector, ord=2)*1.0))
+    AB_th = np.arctan2(pB[1]-pA[1], pB[0]-pA[0])
     AB_norm1 = np.array([AB_midpoint[0] + normal_L*np.cos(AB_th-np.pi/2), AB_midpoint[1] + normal_L*np.sin(AB_th-np.pi/2)])
     AB_norm2 = np.array([AB_midpoint[0] + normal_L*np.cos(AB_th+np.pi/2), AB_midpoint[1] + normal_L*np.sin(AB_th+np.pi/2)])
     norm_interp_X1 = np.linspace(AB_norm1[0], AB_midpoint[0], num=int(interp_num))
@@ -202,13 +205,16 @@ class PurePursuitPlanner(TrackingPlanner):
     def __init__(self, debug=True):
         super().__init__(wp_path=wp_path, wp_gap=0, debug=debug)
         # self.wp = []
-        self.minL = 0.5
-        self.maxL = 2.0
+        if not node_execute:
+            self.minL = 1.5
+        else:
+            self.minL = 0.6
+        self.maxL = 1.5
         self.minP = 0.5
         self.maxP = 0.8
         self.interpScale = 20
-        self.Pscale = 4
-        self.Lscale = 4
+        self.Pscale = 5
+        self.Lscale = 5
         self.interp_P_scale = (self.maxP-self.minP) / self.Pscale
         self.interp_L_scale = (self.maxL-self.minL) / self.Lscale
         self.prev_error = 0
@@ -271,15 +277,15 @@ class PurePursuitPlanner(TrackingPlanner):
         #### get nearest waypoint ### 
 
         #### interpolation ### 
-        if segment_end != 0:
-            x_array = np.linspace(wp_xyaxis[segment_end-1][0], wp_xyaxis[segment_end][0], self.interpScale)
-            y_array = np.linspace(wp_xyaxis[segment_end-1][1], wp_xyaxis[segment_end][1], self.interpScale)
-            v_array = np.linspace(self.wp[2][segment_end-1], self.wp[2][segment_end], self.interpScale)
-            xy_interp = np.vstack([x_array, y_array])
-            dist_interp = np.linalg.norm(xy_interp-cur_position.reshape(2, 1), axis=0) - targetL
-            i_interp = np.argmin(np.abs(dist_interp))
-            target_global = np.array([x_array[i_interp], y_array[i_interp]])
-            target_v = v_array[i_interp]
+        segment_begin = safe_changeIdx(self.wpNum, segment_end, -1)
+        x_array = np.linspace(wp_xyaxis[segment_begin][0], wp_xyaxis[segment_end][0], self.interpScale)
+        y_array = np.linspace(wp_xyaxis[segment_begin][1], wp_xyaxis[segment_end][1], self.interpScale)
+        v_array = np.linspace(self.wp[2][segment_begin], self.wp[2][segment_end], self.interpScale)
+        xy_interp = np.vstack([x_array, y_array])
+        dist_interp = np.linalg.norm(xy_interp-cur_position.reshape(2, 1), axis=0) - targetL
+        i_interp = np.argmin(np.abs(dist_interp))
+        target_global = np.array([x_array[i_interp], y_array[i_interp]])
+        target_v = v_array[i_interp]
         #### interpolation ### 
 
         cur_L = np.linalg.norm(cur_position-target_global)
@@ -374,8 +380,7 @@ class OGrid:
     #     OGridMsg.info = self.map
     #     return OGridMsg
 
-    def update_npMap(self, scan_d):
-        self.nparrMap = np.zeros((self.w, self.h)).astype(np.int8)
+    def single_update_npMap(self, scan_d):
         scan_d = np.clip(scan_d, self.lidar_dmin, self.lidar_dmax)
         angles = self.lidar_angles
         # import ipdb; ipdb.set_trace()
@@ -387,8 +392,14 @@ class OGrid:
         grid_x, grid_y = self.local2grid(local_x, local_y)
         grid_cell_x, grid_cell_y = self.gridCell_from_xy(grid_x, grid_y)
         self.nparrMap[grid_cell_x, grid_cell_y] = 1
-        self.nparrMap[grid_cell_x, np.clip(grid_cell_y+1, 0, self.h-1)] = 1
-        self.nparrMap[grid_cell_x, np.clip(grid_cell_y-1, 0, self.h-1)] = 1
+
+    def update_npMap(self, scan_d):
+        self.nparrMap = np.zeros((self.w, self.h)).astype(np.int8)
+        self.single_update_npMap(scan_d)
+        self.single_update_npMap(scan_d+np.ones_like(scan_d)*0.3)
+        self.single_update_npMap(scan_d+np.ones_like(scan_d)*0.15)
+        # self.nparrMap[grid_cell_x, np.clip(grid_cell_y+1, 0, self.h-1)] = 1
+        # self.nparrMap[grid_cell_x, np.clip(grid_cell_y-1, 0, self.h-1)] = 1
         self.nparrMap[:, :2] = 0
         self.nparrMap[:, -2:] = 0
 
@@ -549,7 +560,7 @@ class RRT(Node):
         self.max_iters = 100
         self.max_dist = 0.1
         self.tree = []
-        self.goal_flow = self.sample()
+        # self.goal_flow = self.sample()
         self.goal_threshold = 0.1
         self.path = []
         self.num_interp= 5
@@ -592,23 +603,23 @@ class RRT(Node):
         self.ackermann_ord.drive.steering_angle = steering_angle
         self.drive_publisher.publish(self.ackermann_ord)
     
-    def check_is_globalWp_blocked(self, segment_end):
-        target_global_span = get_span_from_two_point(span_L=checking_span, 
-                                                     interp_num=checking_interp_num,
-                                                     pA=self.planner.wp[:2, safe_changeIdx(self.planner.wpNum, segment_end, -1)], 
-                                                     pB=self.planner.wp[:2, segment_end])
-        target_global_span = np.vstack([target_global_span, np.zeros((1, 3*checking_interp_num)), np.ones((1, 3*checking_interp_num))])
-        target_local_span = self.planner.global2local_se3 @ target_global_span
-        target_is_blocked, block_sum = self.Map_Processor.check_blocked(target_local_span[0], target_local_span[1])
-        return target_is_blocked, block_sum
+    # def check_is_globalWp_blocked(self, segment_end):
+    #     target_global_span = get_span_from_two_point(span_L=default_check_span, 
+    #                                                  interp_num=check_interp_num,
+    #                                                  pA=self.planner.wp[:2, safe_changeIdx(self.planner.wpNum, segment_end, -1)], 
+    #                                                  pB=self.planner.wp[:2, segment_end])
+    #     target_global_span = np.vstack([target_global_span, np.zeros((1, 3*check_interp_num)), np.ones((1, 3*check_interp_num))])
+    #     target_local_span = self.planner.global2local_se3 @ target_global_span
+    #     target_is_blocked, block_sum = self.Map_Processor.check_blocked(target_local_span[0], target_local_span[1])
+    #     return target_is_blocked, block_sum
     
-    def check_if_globalPoints_blocked(self, pA, pB, return_points=False, class_num=5):
-        target_global_span = get_span_from_two_point(span_L=checking_span, 
-                                                     interp_num=checking_interp_num,
+    def check_if_globalPoints_blocked(self, pA, pB, class_num=5, check_span=None):
+        target_global_span = get_span_from_two_point(span_L=check_span, 
+                                                     interp_num=check_interp_num,
                                                      pA=pA, 
-                                                     pB=pB, return_point=return_points, class_num=class_num)
+                                                     pB=pB, class_num=class_num)
         # if return_points:                                             
-        target_global_span = np.vstack([target_global_span, np.zeros((1, class_num*checking_interp_num)), np.ones((1, class_num*checking_interp_num))])
+        target_global_span = np.vstack([target_global_span, np.zeros((1, class_num*check_interp_num)), np.ones((1, class_num*check_interp_num))])
         target_local_span = self.planner.global2local_se3 @ target_global_span
         # import ipdb; ipdb.set_trace()
         target_is_blocked, block_sum = self.Map_Processor.check_blocked(target_local_span[0], target_local_span[1])
@@ -674,11 +685,16 @@ class RRT(Node):
         avoid_obs = False
         cur_L, cur_P, cur_error, target_local, target_v, target_global, segment_end = self.planner.find_targetWp(pose, speed)
         # cur_segment_end = segment_end
+        
+        # begin wp is two points eariler than end wp
         end_wp = self.planner.wp[:2, segment_end]
         begin_wp = self.planner.wp[:2, safe_changeIdx(self.planner.wpNum, segment_end, -2)]
-        cur_blocked_1, cur_block_sum = self.check_if_globalPoints_blocked(cur_position, target_global, return_points=False, class_num=9)
-        cur_blocked_2, _ = self.check_if_globalPoints_blocked(begin_wp, end_wp)
-        centerline = np.linspace(begin_wp, target_global, num=checking_interp_num)
+        cur_blocked_1, _ = self.check_if_globalPoints_blocked(cur_position, target_global, class_num=9, check_span=default_check_span)
+        cur_blocked_2, _ = self.check_if_globalPoints_blocked(begin_wp, target_global, class_num=9, check_span=default_check_span)
+        
+        # centerline is begin_wp to target_global
+        centerline = np.linspace(begin_wp, target_global, num=check_interp_num)
+        
         # import ipdb; ipdb.set_trace()
         if cur_blocked_1 or cur_blocked_2:
             # cur_segment_end = safe_changeIdx(self.planner.wpNum, cur_segment_end, 1)
@@ -694,20 +710,42 @@ class RRT(Node):
         ##### draw local goal Point
 
         if avoid_obs:
-            # TODO: check 
+            # check two span 
 
-            span1_pA, span1_pB, span2_pA, span2_pB = get_span_from_two_point(span_L=checking_span, interp_num=checking_interp_num, 
-                                                                            pA=centerline[-2], 
-                                                                            pB=centerline[-1],
+            span1_pA, span1_pB, span2_pA, span2_pB = get_span_from_two_point(span_L=default_check_span, interp_num=check_interp_num, 
+                                                                            pA=begin_wp, 
+                                                                            pB=target_global,
                                                                             return_point=True)
             # normal_1, normal_2 = get_normal_from_two_point(pA=cur_position, pB=target_global)
             # normal1_local = self.planner.global2local_se3 @ normal_1
             # normal2_local = self.planner.global2local_se3 @ normal_2
 
             # # import ipdb; ipdb.set_trace()
-            # span1_blocked, span1_sum = self.check_if_globalPoints_blocked(span1_pA, span1_pB, return_points=False, class_num=9)
-            # span2_blocked, span2_sum = self.check_if_globalPoints_blocked(span2_pA, span2_pB, return_points=False, class_num=9)
-            # if span1_blocked and span2_blocked:
+            span1_blocked, span1_sum = self.check_if_globalPoints_blocked(span1_pA, span1_pB, class_num=9, check_span=default_check_span-check_offset)
+            span2_blocked, span2_sum = self.check_if_globalPoints_blocked(span2_pA, span2_pB, class_num=9, check_span=default_check_span-check_offset)
+            if span1_blocked and span2_blocked:
+                cur_avoid_span = avoid_span
+                choose = 2
+            #     if safe_changeIdx(self.planner.wpNum, segment_end, -1) in self.planner.inner_idx:
+            #         choose = 2
+            #     else:
+            #         choose = 1
+            #     cur_avoid_span = avoid_span
+            elif not span1_blocked:
+                cur_avoid_span = avoid_span + avoid_offset
+                choose=2
+            elif not span2_blocked:
+                cur_avoid_span = avoid_span - avoid_offset
+                choose=2
+            # if safe_changeIdx(self.planner.wpNum, segment_end, -1) in self.planner.inner_idx:
+            #         choose = 2
+            else:
+                cur_avoid_span = avoid_span
+                choose = 2
+            
+           
+            # else:
+            #     return
             #     cur_avoid_span = avoid_span + checking_offset
             #     if span1_sum > span2_sum:
             #     # next_wp = self.planner.wp[:2, safe_changeIdx(self.planner.wpNum, cur_segment_end, 1)]
@@ -715,28 +753,22 @@ class RRT(Node):
             #         choose = 2
             #     else:
             #         choose = 1
-            # elif not span1_blocked:
-            #     cur_avoid_span = avoid_span - checking_offset
-            #     choose=1
-            # elif not span2_blocked:
-            #     cur_avoid_span = avoid_span - checking_offset
-            #     choose=2
-            # else:
-            #     return
-            if safe_changeIdx(self.planner.wpNum, segment_end, -1) in self.planner.inner_idx:
-                choose = 2
-            else:
-                choose = 1
-            
-            cur_avoid_span = avoid_span
             print(f'avoid: {choose}, span is {cur_avoid_span}, segment_end is {segment_end}')
+            print(f'blocked:{avoid_obs}, span1 is blocked: {span1_blocked}, span2 is blocked: {span2_blocked}')
+            
+            # get new span
+            span1_pA, span1_pB, span2_pA, span2_pB = get_span_from_two_point(span_L=default_check_span, interp_num=2, 
+                                                                            pA=centerline[-2], 
+                                                                            pB=centerline[-1],
+                                                                            return_point=True)
+            
             if choose == 2:
-                _, _, target_pA, target_pB = get_span_from_two_point(span_L=cur_avoid_span, interp_num=avoid_interp_num, 
+                _, _, target_pA, target_pB = get_span_from_two_point(span_L=cur_avoid_span, interp_num=2, 
                                                                     pA=span2_pA, 
                                                                     pB=span2_pB,
                                                                     return_point=True)
             else:
-                target_pA, target_pB, _, _ = get_span_from_two_point(span_L=cur_avoid_span, interp_num=avoid_interp_num, 
+                target_pA, target_pB, _, _ = get_span_from_two_point(span_L=cur_avoid_span, interp_num=2, 
                                                                     pA=span1_pA, 
                                                                     pB=span1_pB,
                                                                     return_point=True)
@@ -794,7 +826,7 @@ class RRT(Node):
 
 
 
-        ##### draw rrt goal Point
+        ##### draw goal Point
         x, y = target_global[0], target_global[1]
         # local_obs = np.array([x, y, 0, 1])
         # global_obs = self.planner.local2global_se3 @ local_obs        
@@ -806,162 +838,162 @@ class RRT(Node):
         self.rrtgoal_markerpub.publish(self.rrtgoalmarker)
         # ##### draw rrt goal Point         
         
-        # #### draw rrt path
-        # self.rrtplannedPathmarker.points = []
-        # for i, flow in enumerate(self.path):
-        #     flow = self.grid2local(flow)
-        #     x, y = flow[0], flow[1]
-        #     local_obs = np.array([x, y, 0, 1])
-        #     global_obs = local2global @ local_obs
-        #     # print(x, y)
-        #     point = Point()
-        #     point.x = global_obs[0]
-        #     point.y = global_obs[1]
-        #     point.z = 0.0
-        #     self.rrtplannedPathmarker.points.append(point)
-        # self.rrtplannedPath_markerpub.publish(self.rrtplannedPathmarker)
+    #     # #### draw rrt path
+    #     # self.rrtplannedPathmarker.points = []
+    #     # for i, flow in enumerate(self.path):
+    #     #     flow = self.grid2local(flow)
+    #     #     x, y = flow[0], flow[1]
+    #     #     local_obs = np.array([x, y, 0, 1])
+    #     #     global_obs = local2global @ local_obs
+    #     #     # print(x, y)
+    #     #     point = Point()
+    #     #     point.x = global_obs[0]
+    #     #     point.y = global_obs[1]
+    #     #     point.z = 0.0
+    #     #     self.rrtplannedPathmarker.points.append(point)
+    #     # self.rrtplannedPath_markerpub.publish(self.rrtplannedPathmarker)
 
-        # self.rrtpathmarker.points = []
-        # for i, flow in enumerate(self.path):
-        #     flow = self.grid2local(flow)
-        #     x, y = flow[0], flow[1]
-        #     local_obs = np.array([x, y, 0, 1])
-        #     global_obs = local2global @ local_obs
-        #     # print(x, y)
-        #     point = Point()
-        #     point.x = global_obs[0]
-        #     point.y = global_obs[1]
-        #     point.z = 0.0
-        #     self.rrtpathmarker.points.append(point)
-        # self.rrtpathmarker.points = []
-        # for pose in self.tree:
-        #     x1, y1 = self.grid2local(pose[0])[0], self.grid2local(pose[0])[1]
-        #     # x2, y2 = self.grid2local(pose[1])[0], self.grid2local(pose[1])[1]
-        #     local_obs = np.array([x1, y1, 0, 1])
-        #     global_obs = local2global @ local_obs
-        #     # print(x, y)
-        #     point = Point()
-        #     point.x = global_obs[0]
-        #     point.y = global_obs[1]
-        #     point.z = 0.0
-        #     self.rrtpathmarker.points.append(point)            
-        # self.rrtpath_markerpub.publish(self.rrtpathmarker)                  
+    #     # self.rrtpathmarker.points = []
+    #     # for i, flow in enumerate(self.path):
+    #     #     flow = self.grid2local(flow)
+    #     #     x, y = flow[0], flow[1]
+    #     #     local_obs = np.array([x, y, 0, 1])
+    #     #     global_obs = local2global @ local_obs
+    #     #     # print(x, y)
+    #     #     point = Point()
+    #     #     point.x = global_obs[0]
+    #     #     point.y = global_obs[1]
+    #     #     point.z = 0.0
+    #     #     self.rrtpathmarker.points.append(point)
+    #     # self.rrtpathmarker.points = []
+    #     # for pose in self.tree:
+    #     #     x1, y1 = self.grid2local(pose[0])[0], self.grid2local(pose[0])[1]
+    #     #     # x2, y2 = self.grid2local(pose[1])[0], self.grid2local(pose[1])[1]
+    #     #     local_obs = np.array([x1, y1, 0, 1])
+    #     #     global_obs = local2global @ local_obs
+    #     #     # print(x, y)
+    #     #     point = Point()
+    #     #     point.x = global_obs[0]
+    #     #     point.y = global_obs[1]
+    #     #     point.z = 0.0
+    #     #     self.rrtpathmarker.points.append(point)            
+    #     # self.rrtpath_markerpub.publish(self.rrtpathmarker)                  
     
-    def sample(self):
-        """
-        This method should randomly sample the free space, and returns a viable point
+    # def sample(self):
+    #     """
+    #     This method should randomly sample the free space, and returns a viable point
 
-        Args:
-        Returns:
-            (x, y) (float float): a tuple representing the sampled point
+    #     Args:
+    #     Returns:
+    #         (x, y) (float float): a tuple representing the sampled point
 
-        """
-        coord = np.zeros((2))
-        coord[0] = np.random.uniform(0, self.max_pos)
-        coord[1] = np.random.uniform(0, self.max_pos)
-        # y = None
-        return coord
+    #     """
+    #     coord = np.zeros((2))
+    #     coord[0] = np.random.uniform(0, self.max_pos)
+    #     coord[1] = np.random.uniform(0, self.max_pos)
+    #     # y = None
+    #     return coord
     
-    def interp_between_2points(self,sample_point,parent_point):
-        # print("!",sample_point[0],parent_point.shape)
-        x_interp=np.linspace(sample_point[0],parent_point[0],self.num_interp)
-        y_interp = np.linspace(sample_point[1], parent_point[1], self.num_interp)
-        interp_point=np.vstack((x_interp, y_interp)).T
-        # print("points",interp_point.shape)
-        return interp_point
+    # def interp_between_2points(self,sample_point,parent_point):
+    #     # print("!",sample_point[0],parent_point.shape)
+    #     x_interp=np.linspace(sample_point[0],parent_point[0],self.num_interp)
+    #     y_interp = np.linspace(sample_point[1], parent_point[1], self.num_interp)
+    #     interp_point=np.vstack((x_interp, y_interp)).T
+    #     # print("points",interp_point.shape)
+    #     return interp_point
 
-    def check_free_space(self,interp_points_idx,grid_map): # True means free space, False means obstacle
-        idx=interp_points_idx.T  # (2, n)
-        # import ipdb; ipdb.set_trace()
-        num=np.count_nonzero(grid_map[idx[0], idx[1]])
-        if num==0:
-            return True
-        else:
-            return False
+    # def check_free_space(self,interp_points_idx,grid_map): # True means free space, False means obstacle
+    #     idx=interp_points_idx.T  # (2, n)
+    #     # import ipdb; ipdb.set_trace()
+    #     num=np.count_nonzero(grid_map[idx[0], idx[1]])
+    #     if num==0:
+    #         return True
+    #     else:
+    #         return False
 
-    def convert_coord2Index(self, coord, grid_map):
-        index = np.floor(coord / self.r).astype(np.int64)
-        return index
+    # def convert_coord2Index(self, coord, grid_map):
+    #     index = np.floor(coord / self.r).astype(np.int64)
+    #     return index
     
-    def get_path(self, node):
-        path = [node.flow]
-        while node.parent is not None:
-            node = node.parent
-            path.append(node.flow)
-        path.reverse()
+    # def get_path(self, node):
+    #     path = [node.flow]
+    #     while node.parent is not None:
+    #         node = node.parent
+    #         path.append(node.flow)
+    #     path.reverse()
 
-        return path
+    #     return path
 
-    def get_nearest_node_by_dist(self, flows, target, dict):
-        diff = flows - target
-        dist = np.linalg.norm(diff, axis = 1)
-        idx = np.argmin(dist)
-        return dict[idx]
+    # def get_nearest_node_by_dist(self, flows, target, dict):
+    #     diff = flows - target
+    #     dist = np.linalg.norm(diff, axis = 1)
+    #     idx = np.argmin(dist)
+    #     return dict[idx]
     
-    def scale_target_flows(self, target_flows, parent_node):
-        # print("----",target_flows,parent_node)
-        dist = np.linalg.norm(target_flows - parent_node.flow)
-        # print("1",dist)
-        if dist > self.max_dist:
-            target_flows = parent_node.flow + (target_flows - parent_node.flow) / dist * self.max_dist
-        return target_flows
+    # def scale_target_flows(self, target_flows, parent_node):
+    #     # print("----",target_flows,parent_node)
+    #     dist = np.linalg.norm(target_flows - parent_node.flow)
+    #     # print("1",dist)
+    #     if dist > self.max_dist:
+    #         target_flows = parent_node.flow + (target_flows - parent_node.flow) / dist * self.max_dist
+    #     return target_flows
 
-    def plan(self, start, goal, grid_map):
-        """
-        RRT plan in grid world axis
-        """
-        # print(start)
-        # print(goal)
-        # ipdb.set_trace()
-        first_flow = start
-        self.goal_flow = goal
-        # grid_map = self.init_gridMap()
-        first_node = RRTNode(flow = first_flow, parent = None, cost = None, is_root = True)
-        self.tree = []
-        self.nodes = [first_node]
+    # def plan(self, start, goal, grid_map):
+    #     """
+    #     RRT plan in grid world axis
+    #     """
+    #     # print(start)
+    #     # print(goal)
+    #     # ipdb.set_trace()
+    #     first_flow = start
+    #     self.goal_flow = goal
+    #     # grid_map = self.init_gridMap()
+    #     first_node = RRTNode(flow = first_flow, parent = None, cost = None, is_root = True)
+    #     self.tree = []
+    #     self.nodes = [first_node]
 
-        dic = {}
-        node = first_node
-        temp = node.flow.reshape(1, 2)
-        dic[temp.shape[0] - 1] = first_node
+    #     dic = {}
+    #     node = first_node
+    #     temp = node.flow.reshape(1, 2)
+    #     dic[temp.shape[0] - 1] = first_node
 
-        for i in range(5000):
-            if np.random.random() > 0.1:
-                target_flow = self.sample()
-            else:
-                target_flow = goal
-            parent_node = self.get_nearest_node_by_dist(temp, target_flow, dic)
-            target_flow = self.scale_target_flows(target_flow, parent_node)
+    #     for i in range(5000):
+    #         if np.random.random() > 0.1:
+    #             target_flow = self.sample()
+    #         else:
+    #             target_flow = goal
+    #         parent_node = self.get_nearest_node_by_dist(temp, target_flow, dic)
+    #         target_flow = self.scale_target_flows(target_flow, parent_node)
 
-            interp_points=self.interp_between_2points(target_flow,parent_node.flow)
-            interp_points_index=self.convert_coord2Index(interp_points,grid_map)
-            # import ipdb;
-            # ipdb.set_trace()
-            if self.check_free_space(interp_points_index,grid_map):
+    #         interp_points=self.interp_between_2points(target_flow,parent_node.flow)
+    #         interp_points_index=self.convert_coord2Index(interp_points,grid_map)
+    #         # import ipdb;
+    #         # ipdb.set_trace()
+    #         if self.check_free_space(interp_points_index,grid_map):
 
-                new_node = RRTNode(flow = target_flow, parent = parent_node, cost = None, is_root = False)
-                self.tree.append(((new_node.flow[0], new_node.flow[1]),
-                                    (parent_node.flow[0], parent_node.flow[1])))
-                node = new_node
+    #             new_node = RRTNode(flow = target_flow, parent = parent_node, cost = None, is_root = False)
+    #             self.tree.append(((new_node.flow[0], new_node.flow[1]),
+    #                                 (parent_node.flow[0], parent_node.flow[1])))
+    #             node = new_node
 
-                # print(temp.shape,temp)
-                # print(node.flow.shape,node.flow)
-                t = node.flow.reshape(1, 2)
-                temp = np.concatenate((temp, t), axis = 0)
-                # print("temp",temp)
-                dic[temp.shape[0] - 1] = node
-                # print(temp.shape,temp)
-                # temp = torch.cat((temp, torch.unsqueeze(node.flows, dim = 0)), 0)
+    #             # print(temp.shape,temp)
+    #             # print(node.flow.shape,node.flow)
+    #             t = node.flow.reshape(1, 2)
+    #             temp = np.concatenate((temp, t), axis = 0)
+    #             # print("temp",temp)
+    #             dic[temp.shape[0] - 1] = node
+    #             # print(temp.shape,temp)
+    #             # temp = torch.cat((temp, torch.unsqueeze(node.flows, dim = 0)), 0)
 
-                diff = target_flow - self.goal_flow
-                dist_ = np.linalg.norm(diff)
-                # print(dist_)
-                if dist_ < self.goal_threshold:
-                    # print("find")
-                    self.path = self.get_path(new_node)
-                    # print(path)
-                    return True
-        return False
+    #             diff = target_flow - self.goal_flow
+    #             dist_ = np.linalg.norm(diff)
+    #             # print(dist_)
+    #             if dist_ < self.goal_threshold:
+    #                 # print("find")
+    #                 self.path = self.get_path(new_node)
+    #                 # print(path)
+    #                 return True
+    #     return False
 
 
 def main(args=None):
