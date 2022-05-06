@@ -40,22 +40,22 @@ os.makedirs(home+'/wp_log', exist_ok = True)
 log_position = home+'/wp_log'
 wp_path = log_position
 wp_gap = 1
-node_publish = True
+node_publish = False
 node_execute = True
 use_optimal = True
-velocity_scale = 0.8
+velocity_scale = 1.0
 
 # gridWorld
-OGrid_R = 0.05
+OGrid_R = 0.06
 OGrid_x_min = 0
-OGrid_x_max = 4
-OGrid_y_min = -3
-OGrid_y_max = 3
+OGrid_x_max = 3
+OGrid_y_min = -2.5
+OGrid_y_max = 2.5
 
 default_check_span = 0.2
 check_offset = 0.05
 check_interp_num = 10
-avoid_span = 0.3
+avoid_span = 0.32
 avoid_offset = 0.2
 avoid_interp_num = 5
 normal_span = 2.5
@@ -64,14 +64,14 @@ normal_interpScale = 20
 # 1, -pi/2, outer
 # 2, pi/2, inner
 
-def generateDir(leftRanges, rightRanges):
-    left = []; right = [];
-    for l in leftRanges:
-        left.extend(list(range(*l)))
-    for r in rightRanges:
-        right.extend(list(range(*r)))
-    return left, right
-left_idx, right_idx = generateDir([(0, 8), (13, 25), (31, 45)], [(8, 13), (25, 31), (45, 55)])
+# def generateDir(leftRanges, rightRanges):
+#     left = []; right = [];
+#     for l in leftRanges:
+#         left.extend(list(range(*l)))
+#     for r in rightRanges:
+#         right.extend(list(range(*r)))
+#     return left, right
+# left_idx, right_idx = generateDir([(0, 8), (13, 25), (31, 45)], [(8, 13), (25, 31), (45, 55)])
 
 ###### Utils functions ######
 def get_span_from_two_point(span_L=0.3, interp_num=10, pA=None, pB=None, return_point=False, class_num=5):
@@ -208,17 +208,17 @@ class PurePursuitPlanner(TrackingPlanner):
         if not node_execute:
             self.minL = 1.5
         else:
-            self.minL = 0.6
-        self.maxL = 1.5
+            self.minL = 1.0
+        self.maxL = 1.8
         self.minP = 0.5
-        self.maxP = 0.8
+        self.maxP = 0.7
         self.interpScale = 20
         self.Pscale = 5
         self.Lscale = 5
         self.interp_P_scale = (self.maxP-self.minP) / self.Pscale
         self.interp_L_scale = (self.maxL-self.minL) / self.Lscale
         self.prev_error = 0
-        self.D = 0.05
+        self.D = 0.04
         self.errthres = 0.1
         # self.load_Optimalwp()  # (3, n), n is the number of waypoints
         if use_optimal:
@@ -228,8 +228,8 @@ class PurePursuitPlanner(TrackingPlanner):
         
         # update para
         self.local2global = None
-        self.inner_idx = set(left_idx)
-        self.outer_idx = set(right_idx)
+        # self.inner_idx = set(left_idx)
+        # self.outer_idx = set(right_idx)
     
     def find_targetWp(self, pose, speed):
         """
@@ -704,9 +704,10 @@ class RRT(Node):
         # print(f'cur_block_sum{cur_block_sum}')
 
         ##### draw local goal Point
-        self.localgoalmarker.pose.position.x = target_global[0]
-        self.localgoalmarker.pose.position.y = target_global[1]
-        self.localgoal_markerpub.publish(self.localgoalmarker)        
+        if node_publish:
+            self.localgoalmarker.pose.position.x = target_global[0]
+            self.localgoalmarker.pose.position.y = target_global[1]
+            self.localgoal_markerpub.publish(self.localgoalmarker)        
         ##### draw local goal Point
 
         if avoid_obs:
@@ -753,8 +754,8 @@ class RRT(Node):
             #         choose = 2
             #     else:
             #         choose = 1
-            print(f'avoid: {choose}, span is {cur_avoid_span}, segment_end is {segment_end}')
-            print(f'blocked:{avoid_obs}, span1 is blocked: {span1_blocked}, span2 is blocked: {span2_blocked}')
+            # print(f'avoid: {choose}, span is {cur_avoid_span}, segment_end is {segment_end}')
+            # print(f'blocked:{avoid_obs}, span1 is blocked: {span1_blocked}, span2 is blocked: {span2_blocked}')
             
             # get new span
             span1_pA, span1_pB, span2_pA, span2_pB = get_span_from_two_point(span_L=default_check_span, interp_num=2, 

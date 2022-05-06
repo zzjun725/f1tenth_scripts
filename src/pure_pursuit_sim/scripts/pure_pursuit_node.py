@@ -26,9 +26,9 @@ log_position = home+'/wp_log'
 wp_path = log_position
 wp_gap = 1
 node_publish = False
-node_execute = False
+node_execute = True
 use_optimal = True
-velocity_scale = 0.5
+velocity_scale = 0.6
 
 def safe_changeIdx(length, inp, plus):
     return (inp + plus + length) % (length) 
@@ -106,7 +106,7 @@ class PurePursuitPlanner(TrackingPlanner):
         super().__init__(wp_path=wp_path, wp_gap=0, debug=debug)
         # self.wp = []
         self.minL = 0.5
-        self.maxL = 2.0
+        self.maxL = 1.5
         self.minP = 0.6
         self.maxP = 0.9
         self.interpScale = 20

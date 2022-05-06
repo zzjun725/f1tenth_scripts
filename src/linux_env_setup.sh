@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-sudo apt-get update && sudo apt-get install fish
+# sudo apt-get update && sudo apt-get install fish
 cp /sim_ws/src/.tmux.conf /root/.tmux.conf
 
 echo "alias underlay='source /opt/ros/foxy/setup.bash'" >> /root/.bashrc
